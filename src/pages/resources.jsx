@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { FileText, BookOpen, Table, ListChecks, Trophy } from "lucide-react";
+import { FileText, BookOpen, Table, ListChecks, Trophy, Palette } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Checklist } from "@/components/content/checklist";
-import { tasksTemplate, agentsTemplate, promptsTemplate, evaluationRubric } from "@/data/course";
+import { tasksTemplate, agentsTemplate, promptsTemplate, designTemplate, evaluationRubric } from "@/data/course";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { k: "agents", label: "AGENTS.md" },
   { k: "tasks", label: "TASKS.md" },
   { k: "prompts", label: "PROMPTS.md" },
+  { k: "design", label: "DESIGN.md" },
   { k: "rubric", label: "Rubric" },
 ];
 
@@ -97,6 +98,24 @@ export function Resources() {
               templates.
             </p>
             <CodeBlock code={promptsTemplate} language="markdown" filename="PROMPTS.md" />
+          </CardContent>
+        </Card>
+      )}
+
+      {tab === "design" && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Palette className="h-4 w-4" /> DESIGN.md starter
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              The single source of truth for the look and structure of your
+              app. Fill this in from the Google Stitch exports you make during
+              Module 6, then keep it in sync as the build evolves.
+            </p>
+            <CodeBlock code={designTemplate} language="markdown" filename="DESIGN.md" />
           </CardContent>
         </Card>
       )}

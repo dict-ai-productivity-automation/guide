@@ -40,7 +40,7 @@ export function BrandIcon({ slug, className, size = 20 }) {
 
   return (
     <span
-      className={cn("inline-flex shrink-0 items-center justify-center", className)}
+      className={cn("inline-flex shrink-0 items-center justify-center text-foreground", className)}
       style={{ width: size, height: size }}
       aria-hidden="true"
       dangerouslySetInnerHTML={{ __html: svg }}

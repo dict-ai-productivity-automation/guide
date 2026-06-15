@@ -1,4 +1,4 @@
-import { Wrench, Sparkles, CheckCircle2, Lightbulb, User } from "lucide-react";
+import { Wrench, Sparkles, CheckCircle2, Lightbulb, User, Cpu, HardDrive, MemoryStick, MonitorSmartphone, Apple, Terminal, Box } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -6,7 +6,7 @@ import { CodeBlock } from "@/components/ui/code-block";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Checklist } from "@/components/content/checklist";
 import { BrandIcon } from "@/components/brand-icon";
-import { setupSteps, prereqSkills, course } from "@/data/course";
+import { setupSteps, prereqSkills, systemRequirements, course } from "@/data/course";
 
 export function Setup() {
   return (
@@ -120,6 +120,41 @@ export function Setup() {
         </AlertDescription>
       </Alert>
 
+      <Alert>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="h-4 w-4"
+        >
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-1-1 4-4-4-4 1-1 5 5-5 5z"/>
+        </svg>
+        <AlertTitle>First step — fill out the bootcamp intake form.</AlertTitle>
+        <AlertDescription>
+          You must submit the bootcamp intake form before the facilitator can
+          add you to the{" "}
+          <a
+            className="font-medium underline"
+            href={course.facilitator.org}
+            target="_blank"
+            rel="noreferrer"
+          >
+            dict-ai-productivity-automation
+          </a>{" "}
+          GitHub organisation (where every deliverable will live).{" "}
+          <a
+            className="font-semibold underline"
+            href={course.facilitator.orgIntakeForm}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open the intake form →
+          </a>
+        </AlertDescription>
+      </Alert>
+
       <section>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">Skills you should have</h2>
         <div className="grid gap-3 md:grid-cols-3">
@@ -144,6 +179,97 @@ export function Setup() {
       </section>
 
       <section>
+        <h2 className="mb-4 text-2xl font-semibold tracking-tight">System requirements</h2>
+        <p className="mb-4 max-w-2xl text-sm text-muted-foreground">
+          The Day 4 offline module runs a Gemma 4 model directly on your laptop
+          through Ollama. Pick the tier that matches your machine — when in
+          doubt, start with <span className="font-semibold text-foreground">Minimum</span>;
+          you can always upgrade to a bigger model later.
+        </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          {[systemRequirements.minimum, systemRequirements.recommended].map((tier) => (
+            <Card key={tier.label}>
+              <CardHeader>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge variant={tier.label === "Recommended" ? "default" : "outline"}>
+                    {tier.label}
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono">
+                    {tier.model}
+                  </Badge>
+                </div>
+                <CardDescription className="mt-1">{tier.badge}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ul className="space-y-2 text-sm">
+                  <SpecRow icon={<MemoryStick className="h-4 w-4" />} label="RAM" value={tier.ram} />
+                  <SpecRow icon={<Cpu className="h-4 w-4" />} label="CPU" value={tier.cpu} />
+                  {tier.gpu && (
+                    <SpecRow icon={<MonitorSmartphone className="h-4 w-4" />} label="GPU" value={tier.gpu} />
+                  )}
+                  <SpecRow icon={<HardDrive className="h-4 w-4" />} label="Storage" value={tier.storage} />
+                </ul>
+                <div>
+                  <div className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Supported operating systems
+                  </div>
+                  <ul className="space-y-1 text-sm">
+                    {tier.os.map((o) => (
+                      <li key={o.name} className="flex items-start gap-2">
+                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 text-muted-foreground" />
+                        <span>
+                          <span className="font-medium">{o.name}</span>
+                          <span className="text-muted-foreground"> — {o.version}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ul className="space-y-1.5 rounded-md border border-dashed bg-muted/40 p-3 text-xs">
+                  {tier.notes.map((n, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0 text-foreground" />
+                      <span>{n}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-6">
+          <h3 className="mb-3 text-lg font-semibold tracking-tight">
+            Per-OS setup notes
+          </h3>
+          <div className="grid gap-3 md:grid-cols-3">
+            {systemRequirements.osSpecific.map((s) => {
+              const Icon = s.icon === "apple" ? Apple : s.icon === "linux" ? Terminal : Box;
+              return (
+                <Card key={s.os}>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-base">
+                      <Icon className="h-4 w-4" /> {s.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm">
+                      {s.requirements.map((r, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                          <span dangerouslySetInnerHTML={{ __html: r.replace(/`([^`]+)`/g, '<code class="rounded bg-muted px-1 py-0.5 font-mono text-[11px]">$1</code>') }} />
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">Install checklist</h2>
         <Checklist
           storageKey="setup-checklist"
@@ -153,6 +279,7 @@ export function Setup() {
             "Install Git and Node.js 20+",
             "Install Ollama and pull Gemma 4 (2B)",
             "Install OpenCode CLI and sign in to Google AI Studio",
+            "Install OpenCode Desktop and pair it with the CLI",
             "Sign in to Google Stitch and try one prompt",
             "Bookmark Sheets and Slides",
           ]}
@@ -163,7 +290,7 @@ export function Setup() {
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">Step-by-step setup</h2>
         <Accordion>
           {setupSteps.map((step) => (
-            <AccordionItem key={step.id}>
+            <AccordionItem key={step.id} value={step.id}>
               <AccordionTrigger>
                 <div className="flex flex-1 items-center gap-3 text-left">
                   <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-xs font-bold">
@@ -222,5 +349,17 @@ export function Setup() {
         </Card>
       </section>
     </div>
+  );
+}
+
+function SpecRow({ icon, label, value }) {
+  return (
+    <li className="flex items-start gap-2">
+      <span className="mt-0.5 text-muted-foreground">{icon}</span>
+      <span>
+        <span className="font-medium">{label}:</span>{" "}
+        <span className="text-muted-foreground">{value}</span>
+      </span>
+    </li>
   );
 }

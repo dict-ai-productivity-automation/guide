@@ -18,7 +18,7 @@ export function CodeBlock({ code, language = "bash", filename, className }) {
   return (
     <div
       className={cn(
-        "group relative my-4 overflow-hidden rounded-lg border bg-zinc-950 text-zinc-100",
+        "group relative my-4 max-w-full overflow-hidden rounded-lg border bg-zinc-950 text-zinc-100",
         className
       )}
     >
@@ -56,8 +56,8 @@ export function CodeBlock({ code, language = "bash", filename, className }) {
           )}
         </button>
       </div>
-      <pre className="overflow-x-auto p-4 text-sm leading-relaxed">
-        <code className="font-mono">{code}</code>
+      <pre className="overflow-x-auto p-4 text-sm leading-relaxed whitespace-pre">
+        <code className="font-mono block min-w-fit">{code}</code>
       </pre>
     </div>
   );

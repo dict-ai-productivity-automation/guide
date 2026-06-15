@@ -28,6 +28,7 @@ export const course = {
     role: "Bootcamp Facilitator",
     github: "https://github.com/mjsolidarios",
     org: "https://github.com/dict-ai-productivity-automation",
+    orgIntakeForm: "https://forms.gle/PDTmVXXR2UVskd3aA",
   },
 };
 
@@ -40,12 +41,33 @@ export const days = [
     color: "day1",
     summary:
       "Build the responsible-AI mindset, set up an AI-native GitHub repo, and master prompt engineering fundamentals.",
+    opening: {
+      id: "opening",
+      title: "Opening Program",
+      timebox: "60 min",
+      topics: [
+        "DICT welcome address",
+        "Bootcamp goals and 5-day roadmap",
+        "Participant introductions",
+        "Logistics, safety, and offline setup",
+      ],
+      activity:
+        "Facilitator overview, then a 60-second intro from each participant.",
+      deliverable: "Signed attendance + DICT welcome kit",
+      steps: [
+        "Settle in, test your laptop, and connect to the venue Wi-Fi (or switch to airplane mode for the offline day).",
+        "Listen to the DICT welcome address and the bootcamp goals briefing.",
+        "Each participant stands up and gives a 60-second intro: name, role, one thing they want to learn.",
+        "Facilitator walks through the 5-day roadmap, the daily 8h schedule, and the deliverables.",
+        "Confirm setup checklist is done (GitHub, Git, Node, Ollama + Gemma 4, OpenCode, AI Studio, Stitch).",
+      ],
+    },
     modules: [
       {
         id: "m1",
         number: 1,
         title: "Responsible AI & Model Awareness",
-        timebox: "90 min",
+        timebox: "60 min",
         topics: [
           "Generative AI fundamentals",
           "Hallucinations: what they are and how to spot them",
@@ -83,7 +105,7 @@ export const days = [
         id: "m2",
         number: 2,
         title: "AI-Native Repository Setup",
-        timebox: "120 min",
+        timebox: "75 min",
         topics: [
           "GitHub workflows: branches, PRs, issues",
           "Repository organization for AI agents",
@@ -107,7 +129,7 @@ export const days = [
         id: "m3",
         number: 3,
         title: "Prompt Engineering Fundamentals",
-        timebox: "120 min",
+        timebox: "90 min",
         topics: [
           "The RTCF framework: Role, Task, Context, Format",
           "Constraints and negative prompts",
@@ -142,7 +164,7 @@ export const days = [
         id: "m4",
         number: 4,
         title: "AI-Assisted Documents",
-        timebox: "120 min",
+        timebox: "90 min",
         topics: [
           "Memo, report, and meeting summary templates",
           "Action plan generation from transcripts",
@@ -164,7 +186,7 @@ export const days = [
         id: "m5",
         number: 5,
         title: "Data Detective Challenge",
-        timebox: "120 min",
+        timebox: "90 min",
         topics: [
           "Quick stats in Google Sheets (COUNTIF, AVERAGE, FILTER)",
           "Asking the right questions of a dataset",
@@ -219,7 +241,7 @@ export const days = [
         id: "m7",
         number: 7,
         title: "Executive Summary Sprint",
-        timebox: "90 min",
+        timebox: "60 min",
         topics: [
           "One-page executive summary structure",
           "Compressing long policy and report documents",
@@ -263,7 +285,7 @@ export const days = [
         id: "m9",
         number: 9,
         title: "Agent Planning Workshop",
-        timebox: "90 min",
+        timebox: "60 min",
         topics: [
           "Decomposing projects into agent-ready tasks",
           "TASKS.md as a contract with an AI agent",
@@ -296,7 +318,7 @@ export const days = [
         id: "m10",
         number: 10,
         title: "Offline AI Deployment Lab",
-        timebox: "120 min",
+        timebox: "90 min",
         topics: [
           "Installing Ollama on macOS, Linux, Windows",
           "Pulling and running Gemma 4",
@@ -319,7 +341,7 @@ export const days = [
         id: "m11",
         number: 11,
         title: "Disconnected Intelligence Challenge",
-        timebox: "90 min",
+        timebox: "60 min",
         topics: [
           "What works (and breaks) without internet",
           "Prompting strategies for smaller local models",
@@ -343,7 +365,7 @@ export const days = [
         id: "m12",
         number: 12,
         title: "Offline AI App Development",
-        timebox: "180 min",
+        timebox: "150 min",
         topics: [
           "App architecture for offline AI",
           "Picking a UI: CLI, TUI, web, desktop",
@@ -366,7 +388,7 @@ export const days = [
         id: "m13",
         number: 13,
         title: "Automation Flow-Off",
-        timebox: "90 min",
+        timebox: "60 min",
         topics: [
           "Designing AI-assisted workflows end-to-end",
           "Risk classification: informational, advisory, autonomous",
@@ -462,18 +484,22 @@ export const setupSteps = [
     commands: [
       {
         label: "Sign up",
-        code: "Open https://github.com/signup and complete the form.",
+        code: "Open https://github.com/signup and complete the form.\n# Pick a professional username — this is your portfolio for the next 5 days.\n# Use the same email you check daily; the facilitator will invite you to the org.",
       },
       {
         label: "Verify your email",
-        code: "Click the link in the verification email GitHub sends you.",
+        code: "Click the link in the verification email GitHub sends you.\n# If you don't see it within 5 minutes, check the spam folder\n# and re-send from Settings → Emails.",
       },
       {
         label: "Enable 2FA",
-        code: "Settings → Password and authentication → Enable two-factor authentication.",
+        code: "Settings → Password and authentication → Enable two-factor authentication.\n# Use an authenticator app (Google Authenticator, 1Password, Authy).\n# Save the recovery codes somewhere safe — losing them locks you out.",
+      },
+      {
+        label: "Set your commit identity (do this on the machine you'll code on)",
+        code: "git config --global user.name  \"Your Name\"\ngit config --global user.email \"you@example.com\"\n# Use the email tied to your GitHub account, otherwise\n# your commits will show as 'unverified' on your profile.",
       },
     ],
-    tip: "Use a professional username — this is your portfolio for the next 5 days.",
+    tip: "Once your account is ready, share your GitHub username with the facilitator so they can add you to the bootcamp organisation.",
   },
   {
     id: "git",
@@ -487,8 +513,9 @@ export const setupSteps = [
       { label: "Arch / Manjaro", code: "sudo pacman -S git" },
       { label: "Windows (winget)", code: "winget install --id Git.Git -e --source winget" },
       { label: "Windows (choco)", code: "choco install git -y" },
+      { label: "Verify on any platform", code: "git --version\n# should print git version 2.40+ or newer\ngit config --global init.defaultBranch main\n# makes every new repo use 'main' as the default branch name" },
     ],
-    tip: "Verify on any platform with `git --version`.",
+    tip: "If `git` is not found after installing on Windows, close your terminal and open a new one — the PATH only refreshes on new shells.",
   },
   {
     id: "node",
@@ -502,25 +529,46 @@ export const setupSteps = [
       { label: "Fedora / RHEL (dnf)", code: "sudo dnf module enable nodejs:20 -y\nsudo dnf install -y nodejs" },
       { label: "Windows (winget)", code: "winget install OpenJS.NodeJS.LTS" },
       { label: "Windows (nvm-windows, recommended)", code: "# Download and run nvm-setup.exe from https://github.com/coreybutler/nvm-windows\n# Then in a new PowerShell:\nnvm install lts\nnvm use lts" },
+      { label: "Verify on any platform", code: "node --version    # should print v20.x or higher\nnpm --version     # should print 10.x or higher\nwhich node        # macOS / Linux — prints the path to node" },
     ],
-    tip: "Verify with `node --version` (should print v20.x or higher).",
+    tip: "If you have an older Node version (anything < 20), use nvm/nvm-windows — it lets multiple Node versions coexist on the same machine.",
   },
   {
     id: "ollama",
-    title: "Install Ollama + pull Gemma 4",
+    title: "Install Ollama + load Gemma 4",
     time: "10 min",
     description:
-      "Ollama is the local model runtime used on Day 4 for fully offline AI tasks.",
+      "Ollama is the local model runtime used on Day 4 for fully offline AI tasks. If you have internet, pull the model directly. If you're offline, your facilitator will hand you a pre-built model file — copy it to the location below and Ollama will pick it up.",
     commands: [
       { label: "macOS", code: "brew install ollama\n# or download the .dmg from https://ollama.com/download" },
       { label: "Linux", code: "curl -fsSL https://ollama.com/install.sh | sh" },
       { label: "Windows (PowerShell)", code: "winget install Ollama.Ollama\n# or download OllamaSetup.exe from https://ollama.com/download" },
       { label: "Start the Ollama service", code: "# macOS / Linux\nollama serve\n\n# Windows — Ollama runs as a background service after install,\n# so you can usually skip this. Run it manually if needed:\nollama serve" },
-      { label: "Pull Gemma 4 (2B)", code: "ollama pull gemma4:2b" },
-      { label: "Pull Gemma 4 (4B) — optional, needs ~8GB RAM", code: "ollama pull gemma4:4b" },
+      { label: "Option A — pull the model (online)", code: "ollama pull gemma4:2b\n# optional 4B (needs ~8GB RAM):\nollama pull gemma4:4b" },
+      {
+        label: "Option B — load the offline model file from your facilitator",
+        code: `# Copy the model file your facilitator gave you into Ollama's
+# local model store. The exact filename will look like
+# gemma4-2b.bin or gemma4-4b.bin (ask the facilitator for the
+# exact name).
+
+# Linux — copy into the user's Ollama models folder
+mkdir -p ~/.ollama/models
+cp ~/Downloads/gemma4-2b.bin ~/.ollama/models/
+
+# Windows (PowerShell) — copy into the user's Ollama models folder
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\\.ollama\\models"
+Copy-Item "$env:USERPROFILE\\Downloads\\gemma4-2b.bin" "$env:USERPROFILE\\.ollama\\models\\"
+
+# Register the file with Ollama by tagging it
+ollama create gemma4:2b -f -
+# then paste this and press Ctrl-D / Enter twice:
+#   FROM ~/.ollama/models/gemma4-2b.bin
+ollama run gemma4:2b "hi"`,
+      },
       { label: "Smoke test (all platforms)", code: 'ollama run gemma4:2b "Explain what a hallucination is in 2 sentences."' },
     ],
-    tip: "If `ollama serve` says port 11434 is busy, another instance is already running — that's fine.",
+    tip: "If `ollama serve` says port 11434 is busy, another instance is already running — that's fine. If Ollama can't find the offline file, double-check the path: Linux uses `~/.ollama/models/`, Windows uses `%USERPROFILE%\\.ollama\\models\\`.",
   },
   {
     id: "opencode",
@@ -529,11 +577,41 @@ export const setupSteps = [
     description:
       "OpenCode is the AI-assisted development tool used throughout the bootcamp. It can talk to Gemini in the cloud or to a local Ollama model.",
     commands: [
-      { label: "macOS / Linux", code: "curl -fsSL https://opencode.ai/install | bash" },
-      { label: "Windows (PowerShell)", code: "irm https://opencode.ai/install.ps1 | iex" },
-      { label: "Verify", code: "opencode --version" },
+      { label: "macOS / Linux", code: "curl -fsSL https://opencode.ai/install | bash\n# installs to ~/.opencode/bin — make sure it's on your PATH:\necho 'export PATH=\"$HOME/.opencode/bin:$PATH\"' >> ~/.bashrc\nsource ~/.bashrc" },
+      { label: "Windows (PowerShell)", code: "irm https://opencode.ai/install.ps1 | iex\n# if you get an execution-policy error, run this once:\n#   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned" },
+      { label: "Verify", code: "opencode --version\n# should print something like 0.x.y\nopencode --help   # lists all subcommands" },
+      { label: "First-run setup", code: "# Run once to pick a default model provider:\nopencode\n# Pick 'Google AI Studio' (free tier) for cloud work, or\n# pick 'Ollama' and point it at http://127.0.0.1:11434 for offline work." },
     ],
     tip: "On first run, OpenCode will ask you to pick a model provider. Pick Google AI Studio (free tier) for cloud work and Ollama for offline work.",
+  },
+  {
+    id: "opencode-desktop",
+    title: "Install OpenCode Desktop (for lecture sessions)",
+    time: "10 min",
+    description:
+      "OpenCode Desktop is the GUI version we use during lectures and live demos. It pairs with the CLI you just installed — your config, projects, and chat history stay in sync. Install it after the CLI is working so the desktop app can pick up the same providers.",
+    commands: [
+      {
+        label: "Download",
+        code: "# Get the installer for your OS from the official releases page:\n#   https://github.com/sst/opencode/releases\n# Look for the latest 'opencode-desktop' release and download the\n# file that matches your platform (see the labels below).",
+      },
+      { label: "macOS (Apple Silicon — M1/M2/M3/M4)", code: "# Download the .dmg from the releases page, then:\nopen ~/Downloads/opencode-desktop_*_aarch64.dmg\n# Drag the OpenCode app into /Applications.\n# First launch: right-click → Open to bypass Gatekeeper." },
+      { label: "macOS (Intel)", code: "open ~/Downloads/opencode-desktop_*_x64.dmg\n# Drag the OpenCode app into /Applications.\n# First launch: right-click → Open to bypass Gatekeeper." },
+      { label: "Windows (winget)", code: "winget install OpenCode.OpenCodeDesktop\n# After install, launch from the Start menu." },
+      { label: "Windows (manual)", code: "# Download the .exe installer from the releases page and run it.\n# Pick 'Install for all users' if your machine is shared with classmates." },
+      { label: "Linux (Debian / Ubuntu)", code: "sudo dpkg -i ~/Downloads/opencode-desktop_*_amd64.deb\n# If you hit missing-libs errors, run:\nsudo apt-get -f install" },
+      { label: "Linux (Fedora / RHEL)", code: "sudo dnf install ~/Downloads/opencode-desktop_*_x86_64.rpm" },
+      { label: "Linux (universal AppImage)", code: "chmod +x ~/Downloads/opencode-desktop_*_x86_64.AppImage\n# Move it somewhere stable:\nsudo mv ~/Downloads/opencode-desktop_*_x86_64.AppImage /opt/opencode-desktop.AppImage\n# Launch from the apps menu or run it directly:\n/opt/opencode-desktop.AppImage" },
+      {
+        label: "First launch",
+        code: "# Open the OpenCode Desktop app from your applications menu.\n# It will auto-detect the CLI you installed in the previous step,\n# so your provider (Google AI Studio / Ollama) and config are\n# already in place. Sign in with the same account you used for\n# Google AI Studio so the desktop app can read your key.",
+      },
+      {
+        label: "Pair the desktop app with the CLI",
+        code: "# In the desktop app, open Settings → Providers.\n# Click 'Use CLI session' so both apps share the same\n# conversation history and the same model provider.\n# Sanity check from a terminal:\nopencode --version     # CLI version should match the desktop app's\nopencode session list  # should list the desktop session as active",
+      },
+    ],
+    tip: "During lectures, the facilitator will share a live OpenCode Desktop window. Open the app a few minutes before the session starts and pin the opencode project folder so you can follow along. If the desktop app can't find the CLI, run `opencode login` in a terminal once and reopen the app.",
   },
   {
     id: "aistudio",
@@ -544,21 +622,31 @@ export const setupSteps = [
     commands: [
       {
         label: "Sign in",
-        code: "Open https://aistudio.google.com/ with your Google account.",
+        code: "Open https://aistudio.google.com/ with your Google account.\n# Use the same Google account you used for Stitch and Drive.",
       },
       {
         label: "Create an API key",
-        code: "Settings → API keys → Create API key. Copy it somewhere safe.",
+        code: "Settings (gear icon, top-right) → API keys → Create API key.\n# Pick 'Create key in new project' if asked.\n# Copy the key immediately — you can only see it once.\n# Store it in a password manager, not in a chat message.",
+      },
+      {
+        label: "Put the key in your shell environment",
+        code:
+          '# macOS / Linux — add to ~/.bashrc or ~/.zshrc so it persists:\n' +
+          "echo 'export GOOGLE_API_KEY=\"YOUR_KEY\"' >> ~/.bashrc\n" +
+          'source ~/.bashrc\n' +
+          '\n' +
+          '# Windows (PowerShell) — add to your profile:\n' +
+          'Add-Content $PROFILE \'"$env:GOOGLE_API_KEY = YOUR_KEY"\'\n' +
+          '. $PROFILE',
       },
       {
         label: "Test in your shell",
-        code: `export GOOGLE_API_KEY="YOUR_KEY"
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GOOGLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"contents":[{"parts":[{"text":"Say hi in 3 words."}]}]}'`,
+        code: `curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GOOGLE_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"contents":[{"parts":[{"text":"Say hi in 3 words."}]}]}'\n# A successful response will look like:\n#   {"candidates":[{"content":{"parts":[{"text":"Hello there, friend!"}]}}]}`,
       },
     ],
-    tip: "Never commit your API key. Use environment variables or a `.env` file in `.gitignore`.",
+    tip: "Never commit your API key. Use environment variables or a `.env` file listed in `.gitignore`. The free tier has per-minute rate limits — if you hit 429s, wait 60s and retry.",
   },
   {
     id: "stitch",
@@ -569,14 +657,18 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:g
     commands: [
       {
         label: "Open Stitch",
-        code: "Visit https://stitch.withgoogle.com/ and sign in with the same Google account you used for AI Studio.",
+        code: "Visit https://stitch.withgoogle.com/ and sign in with the same Google account you used for AI Studio.\n# If Stitch shows a 'Request access' page, the facilitator\n# will add your email to the allow-list — ping them.",
       },
       {
         label: "Try a starter prompt",
-        code: 'Prompt: "A minimal dashboard for a community college admissions team, with a sidebar nav, a stats row, and a recent applications table."',
+        code: 'Prompt: "A minimal dashboard for a community college admissions team, with a sidebar nav, a stats row, and a recent applications table."\n# Once you get a design, click Export → PNG for each screen.\n# Save the PNGs into your repo under /prototype/ — you\'ll need\n# them for the Day 2 demo and the Day 5 pitch.',
+      },
+      {
+        label: "Hand it off to AI Studio (optional)",
+        code: "In Stitch, click the share icon → 'Open in AI Studio'.\n# This lets you turn the static mockup into a working\n# Gemini prompt you can iterate on during Day 2.",
       },
     ],
-    tip: "Export every screen you generate as a PNG — they go into your `/prototype` folder.",
+    tip: "Export every screen you generate as a PNG — they go into your `/prototype` folder. Stitch is iterative: if the first design is off, refine with 'Make the sidebar narrower' or 'Swap the blue for a warm grey'.",
   },
   {
     id: "sheets-slides",
@@ -585,11 +677,15 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:g
     description: "Used on Day 2 for data detective work and on Day 5 for the Shark Tank pitch deck.",
     commands: [
       {
-        label: "Open",
-        code: "https://sheets.new  →  creates a fresh spreadsheet.\nhttps://slides.new   →  creates a fresh deck.",
+        label: "Open a fresh doc fast",
+        code: "https://sheets.new  →  creates a fresh spreadsheet, already in your Drive.\nhttps://slides.new   →  creates a fresh deck, already in your Drive.\n# The '.new' shortcut is a Google trick — it skips the 'new file' picker.",
+      },
+      {
+        label: "Share with the facilitator",
+        code: "# In Sheets / Slides, click Share → 'Anyone with the link can view'.\n# Paste the link in the bootcamp chat so the facilitator\n# can review your work during the daily check-in.",
       },
     ],
-    tip: "Bookmark both — you'll use them every day.",
+    tip: "Bookmark both — you'll use them every day. If you accidentally edit the wrong file, File → Version history → Restore this version.",
   },
 ];
 
@@ -624,6 +720,86 @@ export const prereqSkills = [
   },
 ];
 
+export const systemRequirements = {
+  minimum: {
+    label: "Minimum",
+    model: "Gemma 4 2B (via Ollama)",
+    badge: "Cloud-heavy • works on almost any laptop",
+    ram: "8 GB",
+    storage: "20 GB free",
+    cpu: "4 cores, x86_64 or arm64",
+    os: [
+      { name: "Windows", version: "Windows 10 (64-bit) or newer" },
+      { name: "macOS", version: "macOS 12 Monterey or newer (Intel or Apple Silicon)" },
+      { name: "Ubuntu", version: "22.04 LTS or newer" },
+      { name: "Fedora", version: "Workstation 38 or newer" },
+    ],
+    notes: [
+      "Runs the small Gemma 4 2B model locally; you can still use Gemini in the cloud for heavier tasks.",
+      "Expect 5–10 seconds for the first token of a 2B response, then smooth streaming.",
+      "8 GB RAM is the floor — close Chrome tabs while the local model is running.",
+    ],
+  },
+  recommended: {
+    label: "Recommended",
+    model: "Gemma 4 4B (via Ollama) or Gemini in the cloud",
+    badge: "Balanced • smooth local inference",
+    ram: "16 GB",
+    storage: "40 GB free (NVMe SSD preferred)",
+    cpu: "8 cores, modern x86_64 or Apple Silicon",
+    gpu: "Optional: 6 GB+ VRAM (NVIDIA, Apple Silicon unified memory shares with RAM)",
+    os: [
+      { name: "Windows", version: "Windows 11 (64-bit), WSL2 enabled for best results" },
+      { name: "macOS", version: "macOS 14 Sonoma or newer, Apple Silicon strongly recommended" },
+      { name: "Ubuntu", version: "24.04 LTS or newer" },
+      { name: "Fedora", version: "Workstation 40 or newer" },
+    ],
+    notes: [
+      "Runs the medium Gemma 4 4B model comfortably; the 4B is what the bootcamp exercises are tuned for.",
+      "Apple Silicon Macs (M2 / M3 / M4) use unified memory, so 16 GB is roughly equivalent to a discrete-GPU PC with 16 GB VRAM.",
+      "If you have an NVIDIA GPU, install the CUDA build of Ollama for a 2–4× speedup over CPU.",
+    ],
+  },
+  osSpecific: [
+    {
+      os: "Windows",
+      icon: "windows",
+      title: "Windows 10 / 11",
+      requirements: [
+        "Windows 10 64-bit (build 19041 or newer) or Windows 11",
+        "Enable WSL2 if you want the Linux install path: `wsl --install` in an admin PowerShell, then restart",
+        "Install the **Visual C++ Redistributable 2019+** (Ollama needs it)",
+        "PowerShell 5.1+ (ships with Windows 10) or PowerShell 7+ for the install scripts",
+        "Disable any third-party antivirus from scanning the Ollama models folder (`~/.ollama/`) — it halves model load time",
+      ],
+    },
+    {
+      os: "macOS",
+      icon: "apple",
+      title: "macOS 12+",
+      requirements: [
+        "macOS 12 Monterey (Intel) or macOS 13 Ventura (Apple Silicon) or newer",
+        "Apple Silicon (M1 / M2 / M3 / M4) is strongly recommended — the unified memory pool makes local inference dramatically faster",
+        "Xcode Command Line Tools: `xcode-select --install` (needed by Homebrew and OpenCode)",
+        "At least 6 GB of free disk space on the boot volume for the model cache",
+        "If you are on an Intel Mac, prefer the 2B model — the 4B model runs but is slow",
+      ],
+    },
+    {
+      os: "Linux",
+      icon: "linux",
+      title: "Ubuntu / Debian / Fedora",
+      requirements: [
+        "Ubuntu 22.04 LTS+ or Debian 12+, or Fedora 38+ (other modern distros work but are untested)",
+        "A user account with `sudo` access (the Ollama install script needs it once)",
+        "`curl` and `git` available (pre-installed on Ubuntu Desktop and Fedora Workstation)",
+        "For NVIDIA GPU acceleration: NVIDIA driver 535+ and `nvidia-cuda-toolkit`",
+        "If you use Wayland (default on Fedora 40+), OpenCode Desktop works but some screen-sharing apps need X11 fallback for the lecture stream",
+      ],
+    },
+  ],
+};
+
 export const repoStructure = `
 .
 ├── README.md
@@ -650,30 +826,45 @@ Capstone/
 `;
 
 export const schedule = [
-  { day: 1, block: "Welcome & goals", minutes: 15 },
+  { day: 1, block: "Opening Program", minutes: 60 },
   { day: 1, block: "Module 1 — Responsible AI & Model Awareness", minutes: 60 },
-  { day: 1, block: "Module 2 — AI-Native Repository Setup", minutes: 90 },
+  { day: 1, block: "Morning break", minutes: 15 },
+  { day: 1, block: "Module 2 — AI-Native Repository Setup", minutes: 75 },
+  { day: 1, block: "Lunch", minutes: 60 },
   { day: 1, block: "Module 3 — Prompt Engineering Fundamentals", minutes: 90 },
-  { day: 1, block: "Prompt Battle challenge", minutes: 45 },
-  { day: 1, block: "Day 1 reflection + close", minutes: 30 },
+  { day: 1, block: "Afternoon break", minutes: 15 },
+  { day: 1, block: "Prompt Battle challenge", minutes: 60 },
+  { day: 1, block: "Day 1 reflection + close", minutes: 45 },
   { day: 2, block: "Recap & Module 4 — AI-Assisted Documents", minutes: 90 },
+  { day: 2, block: "Morning break", minutes: 15 },
   { day: 2, block: "Module 5 — Data Detective Challenge", minutes: 90 },
   { day: 2, block: "Lunch", minutes: 60 },
   { day: 2, block: "Module 6 — AI Prototype Design with Stitch", minutes: 120 },
+  { day: 2, block: "Afternoon break", minutes: 15 },
   { day: 2, block: "Prompt-to-Prototype challenge", minutes: 60 },
+  { day: 2, block: "Day 2 reflection + close", minutes: 30 },
   { day: 3, block: "Recap & Module 7 — Executive Summary Sprint", minutes: 60 },
+  { day: 3, block: "Morning break", minutes: 15 },
   { day: 3, block: "Module 8 — Decision Matrix Challenge", minutes: 120 },
+  { day: 3, block: "Lunch", minutes: 60 },
   { day: 3, block: "Module 9 — Agent Planning Workshop", minutes: 60 },
-  { day: 3, block: "Hallucination Hunt debrief", minutes: 45 },
+  { day: 3, block: "Afternoon break", minutes: 15 },
+  { day: 3, block: "Hallucination Hunt debrief", minutes: 60 },
+  { day: 3, block: "Day 3 reflection + close", minutes: 90 },
   { day: 4, block: "Module 10 — Offline AI Deployment Lab", minutes: 90 },
+  { day: 4, block: "Morning break", minutes: 15 },
   { day: 4, block: "Module 11 — Disconnected Intelligence Challenge", minutes: 60 },
-  { day: 4, block: "Module 12 — Offline AI App Development", minutes: 180 },
+  { day: 4, block: "Lunch", minutes: 60 },
+  { day: 4, block: "Module 12 — Offline AI App Development", minutes: 150 },
+  { day: 4, block: "Afternoon break", minutes: 15 },
   { day: 4, block: "Module 13 — Automation Flow-Off", minutes: 60 },
+  { day: 4, block: "Day 4 reflection + close", minutes: 30 },
   { day: 5, block: "Capstone kickoff (Shark Tank briefs)", minutes: 60 },
-  { day: 5, block: "Team build time", minutes: 240 },
+  { day: 5, block: "Team build time", minutes: 180 },
+  { day: 5, block: "Lunch", minutes: 60 },
   { day: 5, block: "Rehearsals", minutes: 60 },
-  { day: 5, block: "Shark Tank pitches", minutes: 120 },
-  { day: 5, block: "Awards, reflection, close", minutes: 45 },
+  { day: 5, block: "Shark Tank pitches", minutes: 90 },
+  { day: 5, block: "Awards, reflection, close", minutes: 30 },
 ];
 
 export const appIdeas = [
@@ -878,6 +1069,65 @@ export const promptsTemplate = `# PROMPTS.md
 - **Model:** Gemini
 - **Intent:** Rewrite a sloppy prompt using RTCF
 - **Prompt:** \`"Role: senior policy analyst. Task: summarise. Context: ... Format: ..."\`
-- **Output quality:** 5/5
+  - **Output quality:** 5/5
 `;
+
+export const designTemplate = `# DESIGN.md
+
+> The single source of truth for the look, feel, and structure of this app.
+> Generated with Google Stitch during Module 6, then refined as the build progresses.
+> Keep it under 2 pages — link out to longer docs when you need depth.
+
+## 1. One-line pitch
+> <one sentence: what this app is and who it is for>
+
+## 2. Users & jobs-to-be-done
+- **Primary user:** <role, context, devices they use>
+- **Secondary user:** <role, context>
+- **Job-to-be-done #1:** when <situation>, I want to <motivation>, so I can <outcome>.
+- **Job-to-be-done #2:** when <situation>, I want to <motivation>, so I can <outcome>.
+
+## 3. Screens (from Stitch)
+For each screen, list the path, the Stitch prompt that produced it, the export filename, and what changed since the first export.
+
+| # | Screen | Route | Stitch prompt (one-liner) | PNG export |
+|---|--------|-------|---------------------------|------------|
+| 1 | Home / landing | \`/\` | "Minimal landing page for <product> with hero, features, CTA" | \`/prototype/01-home.png\` |
+| 2 | Dashboard | \`/dashboard\` | "Dashboard for <user role> with sidebar nav, stats row, recent items" | \`/prototype/02-dashboard.png\` |
+| 3 | <next screen> | \`<route>\` | "<prompt>" | \`<path>\` |
+
+## 4. Information architecture
+- Top-level nav: <list of 3–6 items in the order users need them>
+- Persistent elements: <sidebar / top bar / footer — what stays on every screen>
+- Modal vs. page: <what becomes a modal vs. its own route, and why>
+
+## 5. Design tokens
+- **Color palette:** <primary, surface, muted, text — hex codes, sourced from Stitch>
+- **Typography:** <heading font, body font, mono font, weights used>
+- **Spacing scale:** <4 / 8 / 12 / 16 / 24 / 32 px, etc.>
+- **Radii:** <sm / md / lg in px>
+- **Iconography:** <icon set, stroke width, source>
+
+## 6. Components
+- **Button:** <primary, secondary, ghost, destructive — each with a one-line usage rule>
+- **Card:** <when to use a card vs. a plain section>
+- **Form fields:** <input, select, textarea — label position, helper text style>
+- **Empty state:** <what every empty list/table looks like>
+
+## 7. Accessibility checklist
+- [ ] All interactive elements reachable by keyboard (Tab order matches reading order)
+- [ ] Color contrast ≥ 4.5:1 for body text, ≥ 3:1 for large text
+- [ ] Every form input has a visible \`<label>\`
+- [ ] Every icon-only button has an \`aria-label\`
+- [ ] Focus ring is visible on every focusable element
+- [ ] \`prefers-reduced-motion\` honoured for any animation
+
+## 8. Open questions
+- <question that the design must answer before build #1 can start>
+- <question that can wait until after the first demo>
+
+## 9. Change log
+- **2026-06-15** — Initial DESIGN.md generated from Stitch exports for Module 6.
+`;
+
 
