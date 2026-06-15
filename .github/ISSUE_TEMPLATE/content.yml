@@ -1,0 +1,26 @@
+name: "Content: change or addition"
+description: Propose a change to a module, topic, glossary term, FAQ, or rubric.
+labels: ["content"]
+---
+
+## What is changing?
+
+<!-- Example: "Day 2 Module 5 — Data Detective Challenge — steps 3 and 4" -->
+
+## Why?
+
+<!-- One sentence is fine. -->
+
+## Proposed change
+
+<!-- Paste the new content, or describe the edit. -->
+
+## Source
+
+<!-- If you pulled this from `../guide.pdf` or another resource, link it. -->
+
+## Checklist
+
+- [ ] I read `AGENTS.md`.
+- [ ] I ran `npm run dev` to verify my change.
+- [ ] I did not introduce new colors, gradients, or dependencies.
