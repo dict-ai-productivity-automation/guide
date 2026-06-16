@@ -37,6 +37,12 @@ const principles = [
   },
 ];
 
+const coAuthors = [
+  "Minimax M3",
+  "Codex",
+  "Gemini",
+];
+
 export function ResponsibleAI() {
   return (
     <div className="space-y-10 animate-fade-in">
@@ -63,6 +69,25 @@ export function ResponsibleAI() {
           is to ship AI output you never read.
         </AlertDescription>
       </Alert>
+
+      <section>
+        <h2 className="mb-4 text-2xl font-semibold tracking-tight">AI use disclosure</h2>
+        <Card>
+          <CardContent className="p-5">
+            <p className="max-w-3xl text-sm text-muted-foreground">
+              This guide was developed with human direction and review, with AI
+              assistance from the following co-content authors.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {coAuthors.map((author) => (
+                <Badge key={author} variant="secondary">
+                  {author}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </section>
 
       <section>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">The six rules</h2>
@@ -108,13 +133,14 @@ export function ResponsibleAI() {
 This repository is built and maintained with the help of AI coding agents.
 
 ## Models in use
-- Gemini 2.0 Flash (cloud) — used for content generation, brainstorming.
-- Gemma 4 2B via Ollama or LM Studio (local) — used for offline work and code review.
+- Minimax M3 — used as a co-content author.
+- Codex — used as a coding and editorial co-content author.
+- Gemini — used as a content generation and brainstorming co-content author.
 
 ## Responsible AI rules
 - Every model output is reviewed by a human before it is merged.
 - No personal data, credentials, or proprietary code is sent to a public model.
-- AI assistance is disclosed in PR descriptions and in the README footer.
+- AI assistance is disclosed in PR descriptions and in the README or site footer.
 - Known limitations: small local models may hallucinate citations; we verify every
   citation against the source PDF.
 - High-risk changes (anything touching auth, payments, or student records) require
