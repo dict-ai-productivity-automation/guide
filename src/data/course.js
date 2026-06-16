@@ -439,12 +439,12 @@ export const days = [
         steps: [
           "Pick a real organisation (your team, a partner, a public agency).",
           "Map the Current Process (swimlane or numbered steps).",
-          "Design the AI Solution: input, model, output, integration points.",
+          "Design the Solution: input, output, and optional LLM or AI integration points.",
           "Build a Google Stitch prototype of the user-facing screens.",
-          "Show an Offline AI option (Ollama or LM Studio + Gemma 4 fallback).",
+          "If your concept uses an AI model, show a cloud or offline option (Ollama or LM Studio + Gemma 4 fallback).",
           "Build a simple ROI model: time saved × hourly cost × volume.",
           "Complete the Risk Assessment and Governance Controls tables.",
-          "Justify the Model Selection (cloud vs local, size, latency, cost).",
+          "If using AI, justify the Model Selection (cloud vs local, size, latency, cost).",
         ],
       },
     ],
@@ -1080,12 +1080,12 @@ export const evaluationRubric = {
     title: "Capstone Shark Tank (Day 5) — 30%",
     criteria: [
       { name: "Problem & Process Map", weight: 10, desc: "Is the chosen org's pain clear? Is the current process mapped?" },
-      { name: "AI Solution Design", weight: 20, desc: "Is the model choice justified? Are inputs/outputs concrete?" },
+      { name: "Solution Design", weight: 20, desc: "Are inputs/outputs concrete? If AI is used, is the model or integration choice justified?" },
       { name: "Prototype (Stitch)", weight: 15, desc: "Does the prototype show the user journey end-to-end?" },
-      { name: "Offline AI Option", weight: 10, desc: "Does the offline fallback actually work locally?" },
+      { name: "AI Integration Option", weight: 10, desc: "If the output is AI-powered, does the team show a viable cloud or offline integration path?" },
       { name: "ROI Analysis", weight: 15, desc: "Time saved × cost × volume — is the math honest?" },
       { name: "Risk & Governance", weight: 15, desc: "Are top risks listed? Are high-risk steps gated by a human?" },
-      { name: "Model Selection Justification", weight: 10, desc: "Why this model, this size, this latency/cost trade-off?" },
+      { name: "Technology Justification", weight: 10, desc: "Why this tool, model, integration, or non-AI approach for the expected latency, cost, and risk?" },
       { name: "Pitch", weight: 5, desc: "Clear? Confident? Q&A handled?" },
     ],
   },
@@ -1226,5 +1226,4 @@ For each screen, list the path, the Stitch prompt that produced it, the export f
 ## 9. Change log
 - **2026-06-15** — Initial DESIGN.md generated from Stitch exports for Module 6.
 `;
-
 
