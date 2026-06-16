@@ -147,6 +147,7 @@ export function Resources() {
               "AGENTS.md exists at the repo root and lists every model you'll use",
               "TASKS.md has at least 15 tasks across setup, model, UI, testing, docs",
               "PROMPTS.md has at least 5 prompts that actually worked",
+              "DESIGN.md documents prototype screens, user flows, and design decisions",
               "At least one module deliverable from Days 1–4 is committed",
               "Ollama (CLI) or LM Studio (GUI) + Gemma 4 is installed and runs offline",
             ]}

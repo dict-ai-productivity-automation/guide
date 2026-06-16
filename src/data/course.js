@@ -112,11 +112,11 @@ export const days = [
           "GitHub workflows: branches, PRs, issues",
           "Repository organization for AI agents",
           "AI-assisted development with OpenCode",
-          "Agent-ready files: README, AGENTS, TASKS, PROMPTS",
+          "Agent-ready files: README, AGENTS, TASKS, PROMPTS, DESIGN",
         ],
         activity:
-          "Scaffold a repository with README.md, AGENTS.md, TASKS.md, and PROMPTS.md.",
-        deliverable: "Bootcamp repository with 4 root markdown files",
+          "Scaffold a repository with README.md, AGENTS.md, TASKS.md, PROMPTS.md, and DESIGN.md.",
+        deliverable: "Bootcamp repository with 5 root markdown files",
         challenge: null,
         example: "",
         steps: [
@@ -125,6 +125,7 @@ export const days = [
           "Add AGENTS.md describing how an AI agent should behave in this repo (tone, tools, constraints).",
           "Add TASKS.md with a checklist of the 14 modules.",
           "Add PROMPTS.md to collect every prompt you used during the bootcamp.",
+          "Add DESIGN.md to document prototype screens, user flows, and design decisions.",
         ],
       },
       {
@@ -796,7 +797,7 @@ export const prereqSkills = [
     level: "We will teach you",
     skills: [
       "Prompt engineering with Gemini, Gemma 4, and Open Models",
-      "AI-native repo structure (README, AGENTS, TASKS, PROMPTS)",
+      "AI-native repo structure (README, AGENTS, TASKS, PROMPTS, DESIGN)",
       "Local model serving with Ollama or LM Studio",
       "Designing AI-assisted workflows with risk and governance",
       "Prototyping with Google Stitch",
@@ -890,6 +891,7 @@ export const repoStructure = `
 ├── AGENTS.md
 ├── TASKS.md
 ├── PROMPTS.md
+├── DESIGN.md
 ├── prototype/
 ├── app/
 ├── docs/
@@ -902,6 +904,7 @@ Capstone/
 ├── AGENTS.md
 ├── TASKS.md
 ├── PROMPTS.md
+├── DESIGN.md
 ├── proposal/
 ├── prototype/
 ├── app/
@@ -1002,7 +1005,7 @@ export const glossary = [
   { term: "RAG", def: "Retrieval-Augmented Generation. Fetch relevant docs, then ask the model to answer using them." },
   { term: "Embedding", def: "A numeric vector that represents the meaning of text. Used to find similar chunks for RAG." },
   { term: "Prompt Battle", def: "Day 1 challenge: two teams swap prompts and try to break the other team's output." },
-  { term: "Agent-ready repository", def: "A repo with README + AGENTS.md + TASKS.md + PROMPTS.md, designed to be readable by an AI agent." },
+  { term: "Agent-ready repository", def: "A repo with README + AGENTS.md + TASKS.md + PROMPTS.md + DESIGN.md, designed to be readable by an AI agent." },
   { term: "AGENTS.md", def: "A markdown file that describes how an AI agent should behave in this repo: tools, tone, limits." },
   { term: "Human-in-the-loop", def: "A human reviews and approves the model's output before it ships. Required for high-risk decisions." },
   { term: "Edge AI", def: "AI that runs close to where the data is generated (e.g. on the laptop) rather than in a remote data center." },
@@ -1226,4 +1229,3 @@ For each screen, list the path, the Stitch prompt that produced it, the export f
 ## 9. Change log
 - **2026-06-15** — Initial DESIGN.md generated from Stitch exports for Module 6.
 `;
-

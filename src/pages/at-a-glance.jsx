@@ -85,6 +85,7 @@ export function AtAGlance() {
 ├── AGENTS.md
 ├── TASKS.md
 ├── PROMPTS.md
+├── DESIGN.md
 ├── proposal/
 ├── prototype/
 ├── app/
