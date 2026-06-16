@@ -108,7 +108,8 @@ npm run lint     # ESLint must be clean before pushing
 You are encouraged to use any of:
 
 - **Gemini** (cloud) — set `GOOGLE_API_KEY` in `.env` (never commit it).
-- **Ollama + Gemma 4** (local) — `ollama run gemma4:2b` after installing from <https://ollama.com>.
+- **Ollama + Gemma 4** (local, CLI) — `ollama run gemma4:2b` after installing from <https://ollama.com>.
+- **LM Studio + Gemma 4** (local, GUI) — beginner-friendly alternative to Ollama. Download from <https://lmstudio.ai>; exposes an OpenAI-compatible API on `http://127.0.0.1:1234`.
 - **OpenCode CLI** — see `../guide.pdf` Module 10 for the install steps.
 
 ## Escalation

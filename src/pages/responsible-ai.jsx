@@ -109,7 +109,7 @@ This repository is built and maintained with the help of AI coding agents.
 
 ## Models in use
 - Gemini 2.0 Flash (cloud) — used for content generation, brainstorming.
-- Gemma 4 2B via Ollama (local) — used for offline work and code review.
+- Gemma 4 2B via Ollama or LM Studio (local) — used for offline work and code review.
 
 ## Responsible AI rules
 - Every model output is reviewed by a human before it is merged.

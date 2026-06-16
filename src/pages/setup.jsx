@@ -182,8 +182,8 @@ export function Setup() {
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">System requirements</h2>
         <p className="mb-4 max-w-2xl text-sm text-muted-foreground">
           The Day 4 offline module runs a Gemma 4 model directly on your laptop
-          through Ollama. Pick the tier that matches your machine — when in
-          doubt, start with <span className="font-semibold text-foreground">Minimum</span>;
+          through Ollama (CLI) or LM Studio (GUI). Pick the tier that matches your
+          machine — when in doubt, start with <span className="font-semibold text-foreground">Minimum</span>;
           you can always upgrade to a bigger model later.
         </p>
         <div className="grid gap-4 md:grid-cols-2">
@@ -277,7 +277,7 @@ export function Setup() {
           items={[
             "Create a GitHub account and enable 2FA",
             "Install Git and Node.js 20+",
-            "Install Ollama and pull Gemma 4 (2B)",
+            "Install Ollama (CLI) or LM Studio (GUI) and load Gemma 4 (2B)",
             "Install OpenCode CLI and sign in to Google AI Studio",
             "Install OpenCode Desktop and pair it with the CLI",
             "Sign in to Google Stitch and try one prompt",
@@ -341,7 +341,7 @@ export function Setup() {
           </CardHeader>
           <CardContent>
             <CodeBlock
-              code={`# .env  (NEVER commit this file)\nGOOGLE_API_KEY=your-key-here\nOLLAMA_HOST=http://127.0.0.1:11434\n\n# .gitignore\n.env\nnode_modules/\ndist/`}
+              code={`# .env  (NEVER commit this file)\nGOOGLE_API_KEY=your-key-here\n\n# Pick ONE of the local providers below (or both if you want to\n# compare). Ollama is CLI-first; LM Studio is a beginner-friendly GUI.\nOLLAMA_HOST=http://127.0.0.1:11434\nLMSTUDIO_HOST=http://127.0.0.1:1234\n\n# .gitignore\n.env\nnode_modules/\ndist/`}
               language="dotenv"
               filename=".env"
             />

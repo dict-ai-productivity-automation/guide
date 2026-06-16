@@ -12,7 +12,8 @@ export const course = {
     { name: "OpenCode", slug: "opencode", desc: "AI-assisted Development" },
     { name: "Google Stitch", slug: "googlestitch", desc: "AI-powered Prototyping" },
     { name: "Gemma 4 Open Models", slug: "gemma", desc: "Lightweight, on-device LLMs" },
-    { name: "Ollama", slug: "ollama", desc: "Local LLM runtime" },
+    { name: "Ollama", slug: "ollama", desc: "Local LLM runtime (CLI)" },
+    { name: "LM Studio", slug: "lmstudio", desc: "Beginner-friendly local LLM GUI" },
     { name: "Google Sheets", slug: "googlesheets", desc: "Spreadsheet data analysis" },
     { name: "Google Slides", slug: "googleslides", desc: "Presentations & storytelling" },
   ],
@@ -59,7 +60,7 @@ export const days = [
         "Listen to the DICT welcome address and the bootcamp goals briefing.",
         "Each participant stands up and gives a 60-second intro: name, role, one thing they want to learn.",
         "Facilitator walks through the 5-day roadmap, the daily 8h schedule, and the deliverables.",
-        "Confirm setup checklist is done (GitHub, Git, Node, Ollama + Gemma 4, OpenCode, AI Studio, Stitch).",
+        "Confirm setup checklist is done (GitHub, Git, Node, Ollama or LM Studio + Gemma 4, OpenCode, AI Studio, Stitch).",
       ],
     },
     modules: [
@@ -79,10 +80,10 @@ export const days = [
         deliverable: "model-comparison.md",
         challenge: null,
         example:
-          "Compare how Gemini, Gemma 4 (via Ollama), and an Open Model each respond to: 'Summarise the EU AI Act in 5 bullets and cite the articles.' Notice differences in recency, citation behaviour, and refusal style.",
+          "Compare how Gemini, Gemma 4 (via Ollama or LM Studio), and an Open Model each respond to: 'Summarise the EU AI Act in 5 bullets and cite the articles.' Notice differences in recency, citation behaviour, and refusal style.",
         steps: [
           "Open Google AI Studio and pick Gemini 2.0 Flash.",
-          "Install Ollama and pull `gemma4:2b` (see Setup).",
+          "Install Ollama (CLI) or LM Studio (GUI) and pull `gemma4:2b` (see Setup).",
           "Pick one Open Model such as `llama3.2:3b` from the Ollama library.",
           "Send the SAME prompt to all three. Copy each response into a markdown table.",
           "Score each response on: Accuracy, Brevity, Hallucinations, Citations, Refusals.",
@@ -90,6 +91,7 @@ export const days = [
         comparisonModels: [
           { name: "Gemini 2.0 Flash", where: "Google AI Studio (cloud)", size: "—", cost: "Free tier", notes: "Default for the bootcamp." },
           { name: "Gemma 4 2B", where: "Ollama (local)", size: "2B params", cost: "Free, runs on a laptop", notes: "Used for offline work on Day 4." },
+          { name: "Gemma 4 2B", where: "LM Studio (local)", size: "2B params", cost: "Free, runs on a laptop", notes: "Beginner-friendly GUI alternative to Ollama." },
           { name: "Llama 3.2 3B", where: "Ollama (local)", size: "3B params", cost: "Free, needs ~4GB RAM", notes: "Example Open Model." },
         ],
         comparisonCriteria: [
@@ -201,7 +203,7 @@ export const days = [
           "Ask Gemini for 5 insights. Write them down verbatim.",
           "Verify each insight against the raw data with Sheets formulas.",
           "Mark any insight that doesn't match as a 'hallucination'.",
-          "Repeat with an Ollama Gemma 4 model and compare.",
+          "Repeat with a local Gemma 4 model (Ollama or LM Studio) and compare.",
         ],
       },
       {
@@ -312,7 +314,7 @@ export const days = [
     theme: "day4",
     color: "day4",
     summary:
-      "Take AI off the cloud. Run Gemma 4 locally with Ollama, build offline apps, and design automated workflows.",
+      "Take AI off the cloud. Run Gemma 4 locally with Ollama or LM Studio, build offline apps, and design automated workflows.",
     modules: [
       {
         id: "m10",
@@ -320,20 +322,20 @@ export const days = [
         title: "Offline AI Deployment Lab",
         timebox: "90 min",
         topics: [
-          "Installing Ollama on macOS, Linux, Windows",
+          "Installing Ollama (CLI) or LM Studio (GUI) on macOS, Linux, Windows",
           "Pulling and running Gemma 4",
           "Configuring OpenCode to use a local model",
           "Verifying local inference (latency, tokens/s)",
         ],
         activity: "Get a working local Gemma 4 + OpenCode pipeline.",
-        deliverable: "Working `ollama run gemma4:2b` and OpenCode config",
+        deliverable: "Working `ollama run gemma4:2b` (or LM Studio server) and OpenCode config",
         challenge: null,
         example: "",
         steps: [
-          "Install Ollama from ollama.com.",
+          "Install Ollama (CLI) from ollama.com OR LM Studio (GUI) from lmstudio.ai — both can host Gemma 4.",
           "Run `ollama pull gemma4:2b` (or `gemma4:4b` if your machine supports it).",
-          "Run `ollama run gemma4:2b \"Hello\"` to confirm it works.",
-          "In OpenCode, point the model provider to the local Ollama endpoint.",
+          "Run `ollama run gemma4:2b \"Hello\"` to confirm it works. (LM Studio: start the local server from the Developer tab — default port 1234.)",
+          "In OpenCode, point the model provider to the local endpoint (Ollama: http://127.0.0.1:11434, LM Studio: http://127.0.0.1:1234).",
           "Ask OpenCode to refactor a small file using only the local model.",
         ],
       },
@@ -369,7 +371,7 @@ export const days = [
         topics: [
           "App architecture for offline AI",
           "Picking a UI: CLI, TUI, web, desktop",
-          "Wiring Ollama into a small program",
+          "Wiring Ollama or LM Studio into a small program",
         ],
         activity: "Build one of: Meeting Summariser, FAQ Assistant, Feedback Analyzer, Policy Analyzer.",
         deliverable: "README.md, AGENTS.md, TASKS.md, working source code",
@@ -378,7 +380,7 @@ export const days = [
         steps: [
           "Pick ONE of the four app options.",
           "Sketch the input → model → output flow.",
-          "Wire up Ollama using its HTTP API or the official SDK.",
+          "Wire up Ollama (http://127.0.0.1:11434) or LM Studio (http://127.0.0.1:1234) using its HTTP API or the official SDK.",
           "Add a minimal UI (CLI is fine).",
           "Write README + AGENTS + TASKS for your project.",
         ],
@@ -439,7 +441,7 @@ export const days = [
           "Map the Current Process (swimlane or numbered steps).",
           "Design the AI Solution: input, model, output, integration points.",
           "Build a Google Stitch prototype of the user-facing screens.",
-          "Show an Offline AI option (Ollama + Gemma 4 fallback).",
+          "Show an Offline AI option (Ollama or LM Studio + Gemma 4 fallback).",
           "Build a simple ROI model: time saved × hourly cost × volume.",
           "Complete the Risk Assessment and Governance Controls tables.",
           "Justify the Model Selection (cloud vs local, size, latency, cost).",
@@ -535,10 +537,10 @@ export const setupSteps = [
   },
   {
     id: "ollama",
-    title: "Install Ollama + load Gemma 4",
+    title: "Install Ollama + load Gemma 4 (CLI option)",
     time: "10 min",
     description:
-      "Ollama is the local model runtime used on Day 4 for fully offline AI tasks. If you have internet, pull the model directly. If you're offline, your facilitator will hand you a pre-built model file — copy it to the location below and Ollama will pick it up.",
+      "Ollama is the CLI-based local model runtime used on Day 4 for fully offline AI tasks. If you are comfortable with the terminal, use this option. If you prefer a graphical interface, skip to the next step and use LM Studio instead — both run the same Gemma 4 model. If you have internet, pull the model directly. If you're offline, your facilitator will hand you a pre-built model file — copy it to the location below and Ollama will pick it up.",
     commands: [
       { label: "macOS", code: "brew install ollama\n# or download the .dmg from https://ollama.com/download" },
       { label: "Linux", code: "curl -fsSL https://ollama.com/install.sh | sh" },
@@ -568,21 +570,103 @@ ollama run gemma4:2b "hi"`,
       },
       { label: "Smoke test (all platforms)", code: 'ollama run gemma4:2b "Explain what a hallucination is in 2 sentences."' },
     ],
-    tip: "If `ollama serve` says port 11434 is busy, another instance is already running — that's fine. If Ollama can't find the offline file, double-check the path: Linux uses `~/.ollama/models/`, Windows uses `%USERPROFILE%\\.ollama\\models\\`.",
+    tip: "If `ollama serve` says port 11434 is busy, another instance is already running — that's fine. If Ollama can't find the offline file, double-check the path: Linux uses `~/.ollama/models/`, Windows uses `%USERPROFILE%\\.ollama\\models\\`. Prefer a GUI? Use LM Studio in the next step instead.",
+  },
+  {
+    id: "lmstudio",
+    title: "Install LM Studio + load Gemma 4 (GUI option)",
+    time: "10 min",
+    description:
+      "LM Studio is a beginner-friendly desktop app for running local LLMs. Pick this option if you are new to the terminal or want a visual way to browse, load, and chat with models. It runs the same Gemma 4 model as Ollama and exposes an OpenAI-compatible HTTP API on http://127.0.0.1:1234, so OpenCode (and any other tool that talks to OpenAI) can use it as a drop-in local provider. If you have internet, download Gemma 4 from inside LM Studio. If you are offline (or the bootcamp is on a closed network), your facilitator will hand you a Gemma 4 .gguf file on an external drive — use Option B below to load it.",
+    commands: [
+      {
+        label: "Download",
+        code: `# Open https://lmstudio.ai/download and grab the installer
+# for your OS (macOS, Windows, or Linux .deb / .AppImage).
+# The app is free for personal use.`,
+      },
+      { label: "macOS", code: "# Open the .dmg from your Downloads folder and drag\n# LM Studio into /Applications.\n# First launch: right-click → Open to bypass Gatekeeper." },
+      { label: "Windows", code: "# Run the .exe installer you downloaded.\n# Launch LM Studio from the Start menu." },
+      { label: "Linux (Debian / Ubuntu)", code: "sudo dpkg -i ~/Downloads/LM_Studio-*.deb\n# If you hit missing-libs errors, run:\nsudo apt-get -f install" },
+      { label: "Linux (universal AppImage)", code: "chmod +x ~/Downloads/LM_Studio-*.AppImage\n/opt/LM_Studio.AppImage   # or just double-click it" },
+      {
+        label: "Option A — search and download Gemma 4 (online)",
+        code: `# In LM Studio's search bar (left sidebar), type:
+#   gemma 4 2b
+# Pick the official google/gemma-4-2b model and click Download.
+# Recommended quantisation: Q4_K_M (smallest) or Q8_0 (best quality).
+# The 2B model needs ~2 GB free disk space.`,
+      },
+      {
+        label: "Option B — load Gemma 4 from the external drive (offline)",
+        code: [
+          "# Your facilitator will hand you a USB / external drive that",
+          "# contains a Gemma 4 .gguf file, e.g.:",
+          "#   gemma-4-2b-instruct-Q4_K_M.gguf",
+          "#   gemma-4-2b-instruct-Q8_0.gguf",
+          "#",
+          "# Steps:",
+          "#   1. Plug in the external drive. Copy the .gguf file into",
+          "#      LM Studio's models folder:",
+          "#         macOS:   ~/Library/Application Support/LM Studio/models/",
+          "#         Linux:   ~/.cache/lm-studio/models/",
+          "#         Windows: %USERPROFILE%\\.cache\\lm-studio\\models\\",
+          "#      (LM Studio also accepts drag-and-drop into the 'My Models'",
+          "#      tab — no copy needed if you just want to use the model from",
+          "#      the external drive. Files load slower from USB 2.0, so a",
+          "#      local copy is faster.)",
+          "#   2. In LM Studio, open the 'My Models' tab on the left.",
+          "#      The .gguf file you just copied should appear with a",
+          "#      'gemma-4-2b-instruct' label.",
+          "#   3. If LM Studio doesn't show it, click the refresh icon at",
+          "#      the top of the 'My Models' list, or restart the app.",
+        ].join("\n"),
+      },
+      {
+        label: "Copy commands (if you'd rather use the terminal)",
+        code: `# macOS — copy from the external drive to LM Studio's models folder
+cp /Volumes/BOOTCAMP/gemma-4-2b-instruct-Q4_K_M.gguf \\
+   "$HOME/Library/Application Support/LM Studio/models/"
+
+# Linux
+cp /media/$USER/BOOTCAMP/gemma-4-2b-instruct-Q4_K_M.gguf \\
+   ~/.cache/lm-studio/models/
+
+# Windows (PowerShell) — adjust the drive letter (D:, E:, …)
+Copy-Item "D:\\gemma-4-2b-instruct-Q4_K_M.gguf" \\
+          "$env:USERPROFILE\\.cache\\lm-studio\\models\\"`,
+      },
+      {
+        label: "Start the local server",
+        code: `# Open the 'Developer' tab on the left.
+# Toggle 'Local Server' ON. The default port is 1234, which is the
+# OpenAI-compatible endpoint OpenCode will talk to.
+# Test it from a terminal:
+curl http://127.0.0.1:1234/v1/models   # should list gemma-4-2b`,
+      },
+      {
+        label: "Smoke test from the chat panel",
+        code: `# Switch to the 'Chat' tab in LM Studio, pick gemma-4-2b at
+# the top, and ask:
+#   "Explain what a hallucination is in 2 sentences."
+# If you get a sensible answer, the local stack is working.`,
+      },
+    ],
+    tip: "LM Studio is GUI-only — there is no Linux server build. If you are running headless or want a CLI workflow, use Ollama instead. LM Studio's local server defaults to http://127.0.0.1:1234 and speaks the OpenAI API, so any tool that supports a custom base URL can use it as a local model provider. If the .gguf on the external drive is too large to copy (e.g. a 4B Q8_0 is ~5 GB), ask your facilitator for the smaller Q4_K_M build.",
   },
   {
     id: "opencode",
     title: "Install OpenCode CLI",
     time: "10 min",
     description:
-      "OpenCode is the AI-assisted development tool used throughout the bootcamp. It can talk to Gemini in the cloud or to a local Ollama model.",
+      "OpenCode is the AI-assisted development tool used throughout the bootcamp. It can talk to Gemini in the cloud or to a local model (Ollama or LM Studio).",
     commands: [
       { label: "macOS / Linux", code: "curl -fsSL https://opencode.ai/install | bash\n# installs to ~/.opencode/bin — make sure it's on your PATH:\necho 'export PATH=\"$HOME/.opencode/bin:$PATH\"' >> ~/.bashrc\nsource ~/.bashrc" },
       { label: "Windows (PowerShell)", code: "irm https://opencode.ai/install.ps1 | iex\n# if you get an execution-policy error, run this once:\n#   Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned" },
       { label: "Verify", code: "opencode --version\n# should print something like 0.x.y\nopencode --help   # lists all subcommands" },
-      { label: "First-run setup", code: "# Run once to pick a default model provider:\nopencode\n# Pick 'Google AI Studio' (free tier) for cloud work, or\n# pick 'Ollama' and point it at http://127.0.0.1:11434 for offline work." },
+      { label: "First-run setup", code: "# Run once to pick a default model provider:\nopencode\n# Pick 'Google AI Studio' (free tier) for cloud work, or\n# pick 'Ollama' (http://127.0.0.1:11434) or 'LM Studio'\n# (http://127.0.0.1:1234) for offline work." },
     ],
-    tip: "On first run, OpenCode will ask you to pick a model provider. Pick Google AI Studio (free tier) for cloud work and Ollama for offline work.",
+    tip: "On first run, OpenCode will ask you to pick a model provider. Pick Google AI Studio (free tier) for cloud work and Ollama or LM Studio for offline work. LM Studio exposes an OpenAI-compatible endpoint, so pick the 'OpenAI-compatible' option and point it at http://127.0.0.1:1234.",
   },
   {
     id: "opencode-desktop",
@@ -604,7 +688,7 @@ ollama run gemma4:2b "hi"`,
       { label: "Linux (universal AppImage)", code: "chmod +x ~/Downloads/opencode-desktop_*_x86_64.AppImage\n# Move it somewhere stable:\nsudo mv ~/Downloads/opencode-desktop_*_x86_64.AppImage /opt/opencode-desktop.AppImage\n# Launch from the apps menu or run it directly:\n/opt/opencode-desktop.AppImage" },
       {
         label: "First launch",
-        code: "# Open the OpenCode Desktop app from your applications menu.\n# It will auto-detect the CLI you installed in the previous step,\n# so your provider (Google AI Studio / Ollama) and config are\n# already in place. Sign in with the same account you used for\n# Google AI Studio so the desktop app can read your key.",
+        code: "# Open the OpenCode Desktop app from your applications menu.\n# It will auto-detect the CLI you installed in the previous step,\n# so your provider (Google AI Studio / Ollama / LM Studio) and\n# config are already in place. Sign in with the same account you\n# used for Google AI Studio so the desktop app can read your key.",
       },
       {
         label: "Pair the desktop app with the CLI",
@@ -713,7 +797,7 @@ export const prereqSkills = [
     skills: [
       "Prompt engineering with Gemini, Gemma 4, and Open Models",
       "AI-native repo structure (README, AGENTS, TASKS, PROMPTS)",
-      "Local model serving with Ollama",
+      "Local model serving with Ollama or LM Studio",
       "Designing AI-assisted workflows with risk and governance",
       "Prototyping with Google Stitch",
     ],
@@ -723,7 +807,7 @@ export const prereqSkills = [
 export const systemRequirements = {
   minimum: {
     label: "Minimum",
-    model: "Gemma 4 2B (via Ollama)",
+    model: "Gemma 4 2B (via Ollama or LM Studio)",
     badge: "Cloud-heavy • works on almost any laptop",
     ram: "8 GB",
     storage: "20 GB free",
@@ -742,7 +826,7 @@ export const systemRequirements = {
   },
   recommended: {
     label: "Recommended",
-    model: "Gemma 4 4B (via Ollama) or Gemini in the cloud",
+    model: "Gemma 4 4B (via Ollama / LM Studio) or Gemini in the cloud",
     badge: "Balanced • smooth local inference",
     ram: "16 GB",
     storage: "40 GB free (NVMe SSD preferred)",
@@ -757,7 +841,7 @@ export const systemRequirements = {
     notes: [
       "Runs the medium Gemma 4 4B model comfortably; the 4B is what the bootcamp exercises are tuned for.",
       "Apple Silicon Macs (M2 / M3 / M4) use unified memory, so 16 GB is roughly equivalent to a discrete-GPU PC with 16 GB VRAM.",
-      "If you have an NVIDIA GPU, install the CUDA build of Ollama for a 2–4× speedup over CPU.",
+      "If you have an NVIDIA GPU, install the CUDA build of Ollama for a 2–4× speedup over CPU. LM Studio will auto-detect your GPU and pick the right backend.",
     ],
   },
   osSpecific: [
@@ -874,7 +958,7 @@ export const appIdeas = [
     blurb: "Paste a meeting transcript → get a 1-paragraph summary, decisions, and action items.",
     difficulty: "Beginner",
     dataExample: "Free transcripts: https://github.com/meeting-summariser-demo (sample.txt)",
-    hint: "Use Ollama's HTTP API: POST to /api/generate with `prompt`. Wrap input/output in a tiny Node or Python script.",
+    hint: "Use Ollama's HTTP API (POST to /api/generate with `prompt`) or LM Studio's OpenAI-compatible API (POST to http://127.0.0.1:1234/v1/chat/completions). Wrap input/output in a tiny Node or Python script.",
   },
   {
     id: "faq-assistant",
@@ -911,8 +995,9 @@ export const glossary = [
   { term: "Temperature", def: "Sampling setting that controls randomness. 0 = deterministic, 1 = creative. Default is usually ~0.7." },
   { term: "Top-p (nucleus) sampling", def: "Sampling method that picks from the smallest set of tokens whose total probability is ≥ p." },
   { term: "Open Model", def: "A model whose weights are publicly downloadable (e.g. Gemma, Llama, Mistral)." },
-  { term: "Gemma 4", def: "Google's family of open models. Small enough to run on a laptop via Ollama." },
-  { term: "Ollama", def: "Local LLM runtime. Serves models over HTTP on http://127.0.0.1:11434 by default." },
+  { term: "Gemma 4", def: "Google's family of open models. Small enough to run on a laptop via Ollama or LM Studio." },
+  { term: "Ollama", def: "Local LLM runtime (CLI-first). Serves models over HTTP on http://127.0.0.1:11434 by default." },
+  { term: "LM Studio", def: "Beginner-friendly desktop GUI for running local LLMs. Exposes an OpenAI-compatible API on http://127.0.0.1:1234." },
   { term: "Inference", def: "Running a model to produce output. Locally: 'offline inference'. On a server: 'cloud inference'." },
   { term: "RAG", def: "Retrieval-Augmented Generation. Fetch relevant docs, then ask the model to answer using them." },
   { term: "Embedding", def: "A numeric vector that represents the meaning of text. Used to find similar chunks for RAG." },
@@ -922,26 +1007,38 @@ export const glossary = [
   { term: "Human-in-the-loop", def: "A human reviews and approves the model's output before it ships. Required for high-risk decisions." },
   { term: "Edge AI", def: "AI that runs close to where the data is generated (e.g. on the laptop) rather than in a remote data center." },
   { term: "GitHub", def: "Hosting for Git repositories. Used here as portfolio, documentation, and version control." },
-  { term: "OpenCode", def: "AI-assisted development CLI used in the bootcamp. Can talk to Gemini (cloud) or Ollama (local)." },
+  { term: "OpenCode", def: "AI-assisted development CLI used in the bootcamp. Can talk to Gemini (cloud), Ollama (local), or LM Studio (local)." },
   { term: "Google Stitch", def: "AI-powered prototyping tool. Generates UI screens from a natural-language prompt." },
 ];
 
 export const faqs = [
   {
     q: "Ollama says 'port 11434 already in use'. What do I do?",
-    a: "Another Ollama instance is already running. On macOS/Linux: `pgrep -fl ollama` then `kill <pid>`. On Windows, open Task Manager and end the Ollama process. Then run `ollama serve` again. If it still fails, restart your machine — Ollama usually starts itself on login.",
+    a: "Another Ollama instance is already running. On macOS/Linux: `pgrep -fl ollama` then `kill <pid>`. On Windows, open Task Manager and end the Ollama process. Then run `ollama serve` again. If it still fails, restart your machine — Ollama usually starts itself on login. (If you are using LM Studio instead, make sure you don't also have Ollama running — only one local server needs port 11434.)",
   },
   {
     q: "My Windows machine doesn't have winget. Can I still install everything?",
-    a: "Yes. For each step, the Setup page also lists a Chocolatey alternative (`choco install …`). If neither is available, use the official download link (Ollama, Git, Node) — every step has a fallback.",
+    a: "Yes. For each step, the Setup page also lists a Chocolatey alternative (`choco install …`). If neither is available, use the official download link (Ollama, LM Studio, Git, Node) — every step has a fallback.",
   },
   {
     q: "OpenCode asks me to pick a model provider. Which one should I choose?",
-    a: "Pick Google AI Studio (free tier) for normal cloud work — it gives you access to Gemini. For Day 4 offline work, add a second provider pointing at Ollama's local URL: http://127.0.0.1:11434.",
+    a: "Pick Google AI Studio (free tier) for normal cloud work — it gives you access to Gemini. For Day 4 offline work, add a second provider: Ollama (http://127.0.0.1:11434) or LM Studio (http://127.0.0.1:1234, choose the 'OpenAI-compatible' option).",
   },
   {
     q: "Ollama runs but `ollama run gemma4:2b` is very slow on my laptop.",
-    a: "A 2B model needs ~2 GB of RAM; 4B needs ~8 GB. Close Chrome and other heavy apps. If your machine has no GPU, the first reply will be slow because Ollama streams. After that it warms up. If it's still unusable, switch to `gemma4:2b` (smallest) or use the cloud provider for that task.",
+    a: "A 2B model needs ~2 GB of RAM; 4B needs ~8 GB. Close Chrome and other heavy apps. If your machine has no GPU, the first reply will be slow because Ollama streams. After that it warms up. If it's still unusable, switch to `gemma4:2b` (smallest), try LM Studio which auto-tunes for your GPU, or use the cloud provider for that task.",
+  },
+  {
+    q: "I'm new to the terminal. Should I use Ollama or LM Studio?",
+    a: "Use LM Studio. It is a desktop GUI: you search for a model, click Download, and chat with it from a window — no terminal commands. It runs the exact same Gemma 4 model as Ollama and exposes an OpenAI-compatible API on http://127.0.0.1:1234, so OpenCode and your Day 4 apps can still use it. Reach for Ollama only if you are comfortable in a terminal or want a lightweight, scriptable setup.",
+  },
+  {
+    q: "Can I use Ollama and LM Studio at the same time?",
+    a: "Yes, but pick different ports. LM Studio uses 1234 by default, Ollama uses 11434. As long as both servers are running, any tool that supports a custom base URL can point at either one. If both try to bind to the same port, stop one of them (close the LM Studio 'Developer' tab, or `ollama serve` only when needed).",
+  },
+  {
+    q: "The bootcamp is offline and I have no internet. How do I load Gemma 4 into LM Studio?",
+    a: "Your facilitator will hand you a USB or external drive containing the Gemma 4 model as a single `.gguf` file (for example `gemma-4-2b-instruct-Q4_K_M.gguf`). Plug the drive in, then in LM Studio open the 'My Models' tab and either drag-and-drop the file in or copy it into LM Studio's models folder (macOS: `~/Library/Application Support/LM Studio/models/`, Linux: `~/.cache/lm-studio/models/`, Windows: `%USERPROFILE%\\.cache\\lm-studio\\models\\`). The model will appear in the list — pick it in the Chat or Developer tab and you're ready. Avoid running LM Studio directly from the external drive: load times are noticeably slower on USB 2.0.",
   },
   {
     q: "The model gave me a confident answer that's actually wrong. Is that a bug?",
@@ -949,7 +1046,7 @@ export const faqs = [
   },
   {
     q: "How do I get a 2GB+ model to run on a 4GB-RAM laptop?",
-    a: "Use `gemma4:2b` (smallest). If you need a 4B model, close all other apps. Ollama offloads unused layers to disk, so you usually can run a model that's slightly larger than your RAM — just expect the first reply to take a few seconds.",
+    a: "Use `gemma4:2b` (smallest). If you need a 4B model, close all other apps. Ollama offloads unused layers to disk, so you usually can run a model that's slightly larger than your RAM — just expect the first reply to take a few seconds. (In LM Studio, pick a smaller quantisation — Q4_K_M instead of Q8_0 — from the model page to cut memory use.)",
   },
   {
     q: "Can I miss a day and still get a passing grade?",
@@ -1040,7 +1137,7 @@ This repository is built and maintained with the help of AI coding agents.
 
 ## Models in use
 - Gemini (cloud) — used for content generation, brainstorming.
-- Gemma 4 2B via Ollama (local) — used for offline work and code review.
+- Gemma 4 2B via Ollama or LM Studio (local) — used for offline work and code review.
 
 ## Responsible AI rules
 - Every model output is reviewed by a human before it is merged.

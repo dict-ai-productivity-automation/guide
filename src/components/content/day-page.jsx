@@ -21,7 +21,7 @@ export function DayPage({ day, showPromptBuilder = false }) {
           </h2>
           <p className="mb-4 text-sm text-muted-foreground">
             Build a prompt with the RTCF framework and copy it straight into
-            Gemini, Gemma 4, or your local Ollama runtime.
+            Gemini, Gemma 4, or your local Ollama / LM Studio runtime.
           </p>
           <PromptBuilder />
         </div>

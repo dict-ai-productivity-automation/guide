@@ -16,6 +16,7 @@ function nameFor(slug) {
     googlesheets: "googlesheets.svg",
     googleslides: "googleslides.svg",
     ollama: "ollama.svg",
+    lmstudio: "lmstudio.svg",
     opencode: "opencode.svg",
     gemma: "gemma.svg",
     dict: "dict.svg",

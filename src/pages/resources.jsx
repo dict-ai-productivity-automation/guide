@@ -148,7 +148,7 @@ export function Resources() {
               "TASKS.md has at least 15 tasks across setup, model, UI, testing, docs",
               "PROMPTS.md has at least 5 prompts that actually worked",
               "At least one module deliverable from Days 1–4 is committed",
-              "Ollama + Gemma 4 is installed and `ollama run gemma4:2b` works offline",
+              "Ollama (CLI) or LM Studio (GUI) + Gemma 4 is installed and runs offline",
             ]}
           />
         </CardContent>
