@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { FileText, BookOpen, Table, ListChecks, Trophy, Palette } from "lucide-react";
+import { FileText, BookOpen, Table, ListChecks, Trophy, Palette, WandSparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
 import { Checklist } from "@/components/content/checklist";
-import { tasksTemplate, agentsTemplate, promptsTemplate, designTemplate, evaluationRubric } from "@/data/course";
+import { tasksTemplate, agentsTemplate, promptsTemplate, designTemplate, skillTemplate, evaluationRubric } from "@/data/course";
 import { cn } from "@/lib/utils";
 
 const TABS = [
@@ -12,6 +12,7 @@ const TABS = [
   { k: "tasks", label: "TASKS.md" },
   { k: "prompts", label: "PROMPTS.md" },
   { k: "design", label: "DESIGN.md" },
+  { k: "skill", label: "SKILL.md" },
   { k: "rubric", label: "Rubric" },
 ];
 
@@ -116,6 +117,24 @@ export function Resources() {
               Module 6, then keep it in sync as the build evolves.
             </p>
             <CodeBlock code={designTemplate} language="markdown" filename="DESIGN.md" />
+          </CardContent>
+        </Card>
+      )}
+
+      {tab === "skill" && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-base">
+              <WandSparkles className="h-4 w-4" /> SKILL.md example
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Use this as a starter for a document, spreadsheet, report, CSV, or
+              workflow automation skill. Replace the examples with your team's
+              actual inputs, checks, and output formats.
+            </p>
+            <CodeBlock code={skillTemplate} language="markdown" filename="SKILL.md" />
           </CardContent>
         </Card>
       )}
