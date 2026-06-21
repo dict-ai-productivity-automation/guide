@@ -58,6 +58,19 @@ export function AtAGlance() {
               <span className="text-sm font-semibold">{d.title}</span>
             </div>
             <ul className="space-y-1 text-xs">
+              {d.skillBlock && (
+                <li key={d.skillBlock.id} className="flex items-start gap-2">
+                  <span className="font-mono text-muted-foreground w-8 shrink-0">
+                    S/W
+                  </span>
+                  <span className="flex-1">
+                    <span className="font-semibold">{d.skillBlock.title}</span>
+                    <span className="block text-muted-foreground">
+                      {d.skillBlock.timebox} · {d.skillBlock.deliverable}
+                    </span>
+                  </span>
+                </li>
+              )}
               {d.modules.map((m) => (
                 <li key={m.id} className="flex items-start gap-2">
                   <span className="font-mono text-muted-foreground w-8 shrink-0">

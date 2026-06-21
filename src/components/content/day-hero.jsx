@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Sparkles } from "lucide-react";
 
 export function DayHero({ day }) {
   return (
@@ -11,6 +12,11 @@ export function DayHero({ day }) {
           <Badge variant="outline" className="font-mono">
             {day.modules.length} Module{day.modules.length > 1 ? "s" : ""}
           </Badge>
+          {day.skillBlock && (
+            <Badge variant="secondary" className="gap-1">
+              <Sparkles className="h-3 w-3" /> Skill workshop
+            </Badge>
+          )}
         </div>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           {day.title}
