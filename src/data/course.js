@@ -257,12 +257,12 @@ export const days = [
       steps: [
         "Install — run `npx skills add Leonxlnx/taste-skill --skill design-taste-frontend` in your portfolio repo. It drops a `SKILL.md` next to your code.",
         "Why it works — Taste Skill is a rules file (typography, motion, anti-slop preflight, layout variance) that any SKILL.md-aware agent loads before generating. It does not replace your design taste — it removes the generic floor under it.",
-        "Live demo on this repo — facilitator installs Taste Skill into `dict-ai-productivity-automation/guide`, then runs the pre-flight on the Day 1 hero, the Tech Stack grid, and the Setup page. Show the same prompt with and without the skill loaded.",
-        "Pick your portfolio — open the personal site, GitHub Pages page, or a single landing page you want to polish. If you do not have one, build a 1-page site in 15 minutes from your bootcamp repo's README (Vite + Tailwind is fine).",
+        "Conduct a pre-flight observation from the instructor.",
+        "Pick your portfolio — open your personal portfolio you want to polish. If you do not have one, build a 1-page site in 15 minutes from your bootcamp repo's README (Vite + Tailwind is fine).",
         "Refactor with any LLM — load your tool of choice (OpenCode Desktop, Cursor, Claude Code, v0, Lovable, Gemini CLI, or Gemini in AI Studio) and ask it to redesign the page using the Taste Skill rules. Try two prompts — one without the skill, one with it — and diff the outputs.",
         "Commit + push — `git add SKILL.md`, `git commit -m \"Add Taste Skill rules\"`, `git push`. The skill becomes part of your portfolio repo forever; every future AI assistant that touches the repo gets the rules for free.",
-        "Share the link — paste your portfolio URL into the bootcamp chat. Facilitator spotlights 3 before/after diffs live for the cohort.",
-        "Stretch — add a `taste-audit.md` to your repo documenting the rules you broke in the before-shot and how the after-shot fixes them. This becomes part of your portfolio's README.",
+        "Publish on Vercel or Netlify.",
+        "Share the link — paste your portfolio URL into the bootcamp chat."
       ],
       example:
         "Before Taste Skill: a hero section with the default Tailwind gradient `from-blue-500 to-purple-600`, a 6-line paragraph of Lorem-ish copy, and a primary button at the default size. After Taste Skill: a one-line pitch in 48px display weight, a 2-line subtitle, a single primary CTA at a deliberate size, and zero gradients. Same content, dramatically different read.",
