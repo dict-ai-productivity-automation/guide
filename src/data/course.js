@@ -290,9 +290,9 @@ export const days = [
           "Ask the model for: TL;DR (3 lines), Key Findings (5), Risks (3), Recommendations (3).",
           "Rewrite the brief in your own words.",
           "Self-audit: re-read the brief and underline any claim you cannot point to a page in the source for. Cut anything uncited.",
-          "Pair swap: trade briefs with a partner. Partner marks every claim as cited, uncited, or inferred. Author revises.",
           "Stretch (fast finishers): rewrite the same brief as a 3-tweet thread and a 30-second elevator pitch.",
           "Verify every claim against the source PDF before submitting.",
+          "Put the summary in Google Vids as content. Visit vids.new to get started."
         ],
       },
       {
