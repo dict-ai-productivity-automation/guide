@@ -115,7 +115,7 @@ export function AtAGlance() {
             <li>Day 2 challenges — 15%</li>
             <li>Day 3 challenges — 20%</li>
             <li>Day 4 offline AI & automation — 20%</li>
-            <li>Day 5 Shark Tank capstone — 30%</li>
+            <li>Day 5 Shark Tank (PH pitch) — 30%</li>
           </ul>
         </div>
         <div className="rounded-lg border bg-card p-4">

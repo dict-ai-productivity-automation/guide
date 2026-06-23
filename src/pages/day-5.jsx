@@ -9,9 +9,10 @@ import { days, capstoneStructure, repoStructure } from "@/data/course";
 const day = days.find((d) => d.id === "day-5");
 
 const components = [
+  "Real PH problem + named stakeholders + local data source",
   "Current Process Map",
   "AI Solution Design",
-  "Google Stitch Prototype",
+  "Google Stitch Prototype (Tagalog/Filipino + English)",
   "Offline AI Option",
   "ROI Analysis",
   "Risk Assessment",
@@ -27,8 +28,10 @@ export function Day5() {
       <section>
         <h2 className="mb-3 text-2xl font-semibold tracking-tight">Capstone requirements</h2>
         <p className="text-sm text-muted-foreground">
-          Your final submission must include every component below. Treat the
-          list as a rubric — Shark Tank judges will be looking for each one.
+          Your team will pitch a real-world AI solution for a Philippine
+          problem in health, agriculture, or general welfare. Your final
+          submission must include every component below. Treat the list as a
+          rubric — Shark Tank judges will be looking for each one.
         </p>
         <Card className="mt-4">
           <CardContent className="p-5">
@@ -46,7 +49,7 @@ export function Day5() {
 
       <section>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-          Shark Tank Module
+          Shark Tank – AI Edition
         </h2>
         <ModuleCard module={day.modules[0]} dayColor={day.color} dayId={day.id} moduleIndex={0} />
       </section>
@@ -76,13 +79,13 @@ export function Day5() {
           <CardContent className="p-5">
             <ol className="space-y-2 text-sm">
               {[
-                "Problem and who feels it (1 slide)",
+                "Problem and who feels it — PH context, named stakeholders, local data source (1 slide)",
                 "Current process map (1 slide)",
                 "Proposed AI solution (1 slide)",
                 "Google Stitch prototype (2-3 slides)",
-                "Offline AI option (1 slide)",
-                "ROI model: time saved × cost × volume (1 slide)",
-                "Risk register + governance controls (1 slide)",
+                "Offline AI option for low-connectivity areas (1 slide)",
+                "ROI model: time saved × cost × volume, with local wage or unit-cost data (1 slide)",
+                "Risk register + governance controls, incl. PH Data Privacy Act of 2012 (1 slide)",
                 "Model selection justification (1 slide)",
                 "Live demo (5 min)",
                 "Q&A",

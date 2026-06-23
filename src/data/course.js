@@ -467,7 +467,7 @@ export const days = [
     theme: "day5",
     color: "day5",
     summary:
-      "Pitch a real-world AI solution. The Shark Tank – AI Edition is the final exam.",
+      "Pitch a real-world AI solution for a Philippine problem in health, agriculture, or general welfare. The Shark Tank – AI Edition is the final exam.",
     modules: [
       {
         id: "m14",
@@ -475,26 +475,32 @@ export const days = [
         title: "Shark Tank – AI Edition",
         timebox: "Full day",
         topics: [
-          "Mapping a real-world process",
-          "Designing an AI solution with clear ROI",
-          "Prototyping with Google Stitch",
-          "Offline AI as a fallback / differentiator",
-          "Risk, governance, and model selection",
+          "Picking a real-world Philippine problem in health, agriculture, or general welfare",
+          "Mapping a real Filipino workflow (barangay, LGU, NGO, hospital, farm cooperative, public agency)",
+          "Designing an AI solution that fits Philippine infrastructure (intermittent connectivity, mixed devices, multilingual users)",
+          "Prototyping with Google Stitch in Tagalog/Filipino and English",
+          "Offline AI as a differentiator for areas with poor connectivity (Gemma 4 via Ollama or LM Studio)",
+          "Risk, governance, the PH Data Privacy Act of 2012, and model selection",
         ],
-        activity: "Teams pitch an AI solution for a real organisation.",
+        activity:
+          "Teams pick a real-world Philippine problem in health, agriculture, or general welfare and pitch an AI solution grounded in local data, communities, and constraints.",
         deliverable:
-          "Pitch deck + Capstone repository (see structure below) + live demo",
+          "Pitch deck + Capstone repository (see structure below) + live demo with a real PH problem, named stakeholders, and at least one local data source",
         challenge: "Capstone",
-        example: "",
+        example:
+          "Pick a problem like: 'Dengue early-warning for Metro Manila barangays using PAGASA rainfall, DOH case reports, and search-trend data.' Map the current workflow (manual monthly reporting from Rural Health Units → delayed city response). Design a Gemma 4 + Sheets prototype that gives a barangay captain a weekly risk score and SMS-ready advisories in Tagalog. Show how the same model runs offline on a laptop in a rural health office with no internet.",
         steps: [
-          "Pick a real organisation (your team, a partner, a public agency).",
-          "Map the Current Process (swimlane or numbered steps).",
-          "Design the Solution: input, output, and optional LLM or AI integration points.",
-          "Build a Google Stitch prototype of the user-facing screens.",
-          "If your concept uses an AI model, show a cloud or offline option (Ollama or LM Studio + Gemma 4 fallback).",
-          "Build a simple ROI model: time saved × hourly cost × volume.",
-          "Complete the Risk Assessment and Governance Controls tables.",
-          "If using AI, justify the Model Selection (cloud vs local, size, latency, cost).",
+          "Form a team of 2–4 and pick ONE domain: health, agriculture, or general welfare.",
+          "Pick a specific real-world problem in that domain grounded in a real Filipino context (barangay, LGU, hospital, farm cooperative, public agency, NGO, or OFW community).",
+          "Identify at least one real stakeholder you would brief or consult if this were a real deployment (e.g. a rural health midwife, a municipal agriculture officer, a barangay tanod).",
+          "Find at least one real local data source (PSGC, DOH, PhilRice, PSA, PAGASA, PhilHealth, or a published open dataset) and cite it in the proposal.",
+          "Map the Current Process (swimlane or numbered steps) — who does what, on what device, with what internet.",
+          "Design the Solution: input, output, and optional LLM or AI integration points. Note where the model runs (cloud vs. local Gemma 4 via Ollama or LM Studio).",
+          "Build a Google Stitch prototype of the user-facing screens. Use Tagalog/Filipino where the actual end-user would.",
+          "If your concept uses an AI model, show a cloud or offline option (Ollama or LM Studio + Gemma 4 fallback) and explain the trade-off.",
+          "Build a simple ROI model: time saved × hourly cost × volume, using Philippine wage or unit-cost data where you can.",
+          "Complete the Risk Assessment and Governance Controls tables. Cite the PH Data Privacy Act of 2012 where personal data is in scope.",
+          "If using AI, justify the Model Selection (cloud vs local, size, latency, cost, multilingual support for Tagalog/Filipino/Cebuano).",
         ],
       },
     ],
@@ -506,7 +512,7 @@ export const assessment = [
   { day: 2, label: "Day 2 Challenges", weight: 15 },
   { day: 3, label: "Day 3 Challenges", weight: 20 },
   { day: 4, label: "Day 4 Offline AI & Automation", weight: 20 },
-  { day: 5, label: "Day 5 Shark Tank Capstone", weight: 30 },
+  { day: 5, label: "Day 5 Shark Tank — PH Pitch", weight: 30 },
 ];
 
 export const league = [
@@ -997,7 +1003,7 @@ export const schedule = [
   { day: 4, block: "Afternoon break", minutes: 15 },
   { day: 4, block: "Module 13 — Automation Flow-Off", minutes: 60 },
   { day: 4, block: "Day 4 reflection + close", minutes: 30 },
-  { day: 5, block: "Capstone kickoff (Shark Tank briefs)", minutes: 60 },
+  { day: 5, block: "Capstone kickoff — PH problem selection", minutes: 60 },
   { day: 5, block: "Team build time", minutes: 180 },
   { day: 5, block: "Lunch", minutes: 60 },
   { day: 5, block: "Rehearsals", minutes: 60 },
@@ -1135,12 +1141,12 @@ export const evaluationRubric = {
   capstone: {
     title: "Capstone Shark Tank (Day 5) — 30%",
     criteria: [
-      { name: "Problem & Process Map", weight: 10, desc: "Is the chosen org's pain clear? Is the current process mapped?" },
+      { name: "Problem & Process Map", weight: 10, desc: "Is the chosen PH problem (health, agriculture, or general welfare) grounded in a real Filipino context with named stakeholders? Is the current process mapped and at least one local data source cited?" },
       { name: "Solution Design", weight: 20, desc: "Are inputs/outputs concrete? If AI is used, is the model or integration choice justified?" },
-      { name: "Prototype (Stitch)", weight: 15, desc: "Does the prototype show the user journey end-to-end?" },
-      { name: "AI Integration Option", weight: 10, desc: "If the output is AI-powered, does the team show a viable cloud or offline integration path?" },
-      { name: "ROI Analysis", weight: 15, desc: "Time saved × cost × volume — is the math honest?" },
-      { name: "Risk & Governance", weight: 15, desc: "Are top risks listed? Are high-risk steps gated by a human?" },
+      { name: "Prototype (Stitch)", weight: 15, desc: "Does the prototype show the user journey end-to-end in Tagalog/Filipino and/or English?" },
+      { name: "AI Integration Option", weight: 10, desc: "If the output is AI-powered, does the team show a viable cloud or offline integration path that fits Philippine connectivity?" },
+      { name: "ROI Analysis", weight: 15, desc: "Time saved × cost × volume — is the math honest and grounded in local wage or unit-cost data?" },
+      { name: "Risk & Governance", weight: 15, desc: "Are top risks listed? Are high-risk steps gated by a human? Is the PH Data Privacy Act of 2012 considered where personal data is in scope?" },
       { name: "Technology Justification", weight: 10, desc: "Why this tool, model, integration, or non-AI approach for the expected latency, cost, and risk?" },
       { name: "Pitch", weight: 5, desc: "Clear? Confident? Q&A handled?" },
     ],
