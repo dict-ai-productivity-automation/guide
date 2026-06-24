@@ -1146,11 +1146,137 @@ export const evaluationRubric = {
       { name: "Prototype (Stitch)", weight: 15, desc: "Does the prototype show the user journey end-to-end in Tagalog/Filipino and/or English?" },
       { name: "AI Integration Option", weight: 10, desc: "If the output is AI-powered, does the team show a viable cloud or offline integration path that fits Philippine connectivity?" },
       { name: "ROI Analysis", weight: 15, desc: "Time saved × cost × volume — is the math honest and grounded in local wage or unit-cost data?" },
-      { name: "Risk & Governance", weight: 15, desc: "Are top risks listed? Are high-risk steps gated by a human? Is the PH Data Privacy Act of 2012 considered where personal data is in scope?" },
+      { name: "Risk & Governance", weight: 15, desc: "Are top risks listed? Are high-risk steps gated by a human? Is responsible use of AI addressed (bias, hallucinations, human oversight, transparency)?" },
       { name: "Technology Justification", weight: 10, desc: "Why this tool, model, integration, or non-AI approach for the expected latency, cost, and risk?" },
       { name: "Pitch", weight: 5, desc: "Clear? Confident? Q&A handled?" },
     ],
   },
+};
+
+export const sharkTankRubric = {
+  title: "Shark Tank – AI Edition",
+  subtitle: "Day 5 Capstone Judge's Rubric",
+  totalCapstoneWeight: 30,
+  scoringScale: [
+    { score: 1, label: "Poor" },
+    { score: 2, label: "Fair" },
+    { score: 3, label: "Good" },
+    { score: 4, label: "Very Good" },
+    { score: 5, label: "Excellent" },
+  ],
+  sections: [
+    {
+      id: "problem",
+      name: "Problem & Process Map",
+      weight: 8,
+      points: [
+        "Real Philippine problem grounded in a Filipino context (health, agriculture, or general welfare)",
+        "Named stakeholders identified (barangay, LGU, hospital, farm cooperative, public agency, NGO, or OFW community)",
+        "Current process clearly mapped (swimlane or numbered steps)",
+        { text: "At least one real local data source cited (PSGC, DOH, PhilRice, PSA, PAGASA, PhilHealth, or published open dataset)", optional: true },
+      ],
+    },
+    {
+      id: "solution",
+      name: "Solution Design",
+      weight: 15,
+      points: [
+        "Inputs and outputs are concrete and well-defined",
+        "AI integration points (if any) are clearly identified",
+        "Solution is appropriate for the local infrastructure (intermittent connectivity, mixed devices, multilingual users)",
+        "Where the model runs is explicit (cloud vs local Gemma 4 via Ollama or LM Studio)",
+      ],
+    },
+    {
+      id: "prototype",
+      name: "Prototype (Google Stitch)",
+      weight: 12,
+      points: [
+        "User journey is shown end-to-end across the screens",
+        "Screens are in Tagalog/Filipino and/or English matching the actual end-user",
+        "Layout, components, and copy are consistent and usable",
+      ],
+    },
+    {
+      id: "ai-option",
+      name: "AI Integration Option",
+      weight: 10,
+      points: [
+        "A viable cloud OR offline integration path is shown",
+        "Path fits Philippine connectivity realities",
+        "Trade-offs between cloud and offline are explained honestly",
+        "Multilingual support (Tagalog/Filipino/Cebuano) is addressed where relevant",
+      ],
+    },
+    {
+      id: "roi",
+      name: "ROI Analysis",
+      weight: 10,
+      points: [
+        "Model uses the formula: time saved × cost × volume",
+        "Numbers are grounded in Philippine wage or unit-cost data",
+        "Assumptions and sources are stated explicitly",
+        "ROI is realistic and defensible to a government or LGU audience",
+      ],
+    },
+    {
+      id: "risk",
+      name: "Risk & Governance",
+      weight: 12,
+      points: [
+        "Top risks are listed with likelihood × impact",
+        "High-risk steps are gated by a human-in-the-loop checkpoint",
+        "Responsible use of AI is addressed throughout the proposal (bias, hallucinations, human oversight, transparency)",
+        "Rollback, audit logging, and escalation paths are documented",
+      ],
+    },
+    {
+      id: "tech",
+      name: "Technology Justification",
+      weight: 8,
+      points: [
+        "Model selection is justified (cloud vs local, size, latency, cost, multilingual support)",
+        "Non-AI components are equally well-justified",
+        "Trade-offs are honest, not promotional",
+        "Stack is appropriate for the chosen deployment environment",
+      ],
+    },
+    {
+      id: "pitch",
+      name: "Pitch & Demo",
+      weight: 5,
+      points: [
+        "Problem, solution, and ROI are explained clearly within the timebox",
+        "Live demo runs without major issues",
+        "Q&A responses are confident and cite evidence",
+        "Team members all contribute",
+      ],
+    },
+    {
+      id: "repo",
+      name: "Repository Setup",
+      weight: 20,
+      points: [
+        "Repo follows the required Capstone/ structure (README, AGENTS, TASKS, PROMPTS, DESIGN, proposal, prototype, app, docs, presentation)",
+        "README.md is current, scannable, and links to the live prototype and demo",
+        "AGENTS.md describes tone, tools, constraints, and responsible-AI rules for an AI agent working in the repo",
+        "TASKS.md lists 20+ actionable tasks with acceptance criteria, and a Definition of Done",
+        "PROMPTS.md captures every prompt used with model, intent, and quality (1–5)",
+        "DESIGN.md documents screens, design tokens, and accessibility rules",
+        "Source code in /app is runnable, has a minimal UI, and is wired to the chosen model (cloud or local)",
+        "No secrets, API keys, .env files, or node_modules are committed",
+        "Commits use the configured GitHub identity and the history is clean and readable",
+        "Repo is shared with the facilitator (public or collaborator) before judging starts",
+      ],
+    },
+  ],
+  bands: [
+    { min: 90, label: "Diamond — Responsible AI Champion" },
+    { min: 75, label: "Platinum — AI Strategist" },
+    { min: 60, label: "Gold — Workflow Builder" },
+    { min: 45, label: "Silver — AI Analyst" },
+    { min: 0, label: "Bronze — Prompt Apprentice" },
+  ],
 };
 
 export const swotTemplate = {

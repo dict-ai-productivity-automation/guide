@@ -3,7 +3,8 @@ import { DayHero } from "@/components/content/day-hero";
 import { DayNav } from "@/components/content/day-nav";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/ui/code-block";
-import { CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, Download } from "lucide-react";
 import { days, capstoneStructure, repoStructure } from "@/data/course";
 
 const day = days.find((d) => d.id === "day-5");
@@ -48,9 +49,21 @@ export function Day5() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-semibold tracking-tight">
-          Shark Tank – AI Edition
-        </h2>
+        <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Shark Tank – AI Edition
+          </h2>
+          <a href="/shark-tank-rubric">
+            <Button size="sm" className="gap-2">
+              <Download className="h-4 w-4" /> Download judge's rubric (PDF)
+            </Button>
+          </a>
+        </div>
+        <p className="mb-4 text-sm text-muted-foreground">
+          A printable scoring rubric is available for judges — including team-info fields,
+          a Repository Setup section (20% of the capstone), and a judge sign-off block at
+          the bottom. Use it to score each pitch consistently.
+        </p>
         <ModuleCard module={day.modules[0]} dayColor={day.color} dayId={day.id} moduleIndex={0} />
       </section>
 
@@ -85,7 +98,7 @@ export function Day5() {
                 "Google Stitch prototype (2-3 slides)",
                 "Offline AI option for low-connectivity areas (1 slide)",
                 "ROI model: time saved × cost × volume, with local wage or unit-cost data (1 slide)",
-                "Risk register + governance controls, incl. PH Data Privacy Act of 2012 (1 slide)",
+                "Risk register + governance controls, incl. responsible use of AI (1 slide)",
                 "Model selection justification (1 slide)",
                 "Live demo (5 min)",
                 "Q&A",

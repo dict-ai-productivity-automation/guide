@@ -34,6 +34,7 @@ function buildIndex() {
     { title: "Glossary", to: "/glossary" },
     { title: "FAQ & Troubleshooting", to: "/faq" },
     { title: "Resources", to: "/resources" },
+    { title: "Shark Tank rubric (PDF, Day 5)", to: "/shark-tank-rubric" },
   ];
   for (const p of pages) {
     items.push({ kind: "page", title: p.title, subtitle: "", to: p.to, keywords: [p.title] });

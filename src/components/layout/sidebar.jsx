@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, Wrench, Award, ShieldCheck, BookOpen, HelpCircle, FileText, Calendar, LayoutDashboard, Printer } from "lucide-react";
+import { Home, Wrench, Award, ShieldCheck, BookOpen, HelpCircle, FileText, Calendar, LayoutDashboard, Printer, Gavel } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { days } from "@/data/course";
 
@@ -17,6 +17,7 @@ const ref = [
   { to: "/faq", label: "FAQ & Troubleshooting", icon: HelpCircle },
   { to: "/resources", label: "Resources", icon: FileText },
   { to: "/glance", label: "At-a-glance (print)", icon: Printer },
+  { to: "/shark-tank-rubric", label: "Shark Tank rubric (PDF)", icon: Gavel },
 ];
 
 export function Sidebar() {
